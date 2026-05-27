@@ -5,450 +5,301 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>포트폴리오 | 김서현</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green-900: #0a2e1a;
-    --green-800: #0f4427;
-    --green-700: #165c35;
-    --green-600: #1e7a47;
-    --green-500: #27a05e;
-    --green-400: #3dbc76;
-    --green-300: #6ed49a;
-    --green-200: #a8eac3;
-    --green-100: #d4f5e3;
-    --green-50:  #edfaf3;
-    --gold:      #c9a84c;
-    --gold-light:#f0d98b;
-    --cream:     #f8f6f0;
-    --dark:      #0d1f13;
-    --text-main: #1a2e20;
-    --text-sub:  #4a6458;
-    --border:    #c8ddd2;
+    --cream:     #F4EFE6;
+    --cream2:    #EDE6D9;
+    --warm-white:#FDFAF6;
+    --sage:      #6B8F6B;
+    --sage-dark: #4A6E4A;
+    --sage-deep: #2C3E2D;
+    --sage-light:#A8C5A8;
+    --sage-pale: #D6E8D6;
+    --sage-50:   #EEF5EE;
+    --terra:     #B87355;
+    --terra-light:#D4956E;
+    --terra-pale:#F0DDD0;
+    --text:      #2A2415;
+    --text-sub:  #6B6553;
+    --border:    #D4CCBC;
+    --dark-nav:  #1E2C1F;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Pretendard', -apple-system, sans-serif;
-    background: var(--cream);
-    color: var(--text-main);
-    overflow-x: hidden;
-  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: var(--green-900);
-    border-bottom: 1px solid var(--green-700);
+    background: var(--dark-nav);
+    border-bottom: 1px solid rgba(107,143,107,0.3);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem;
-    height: 60px;
+    padding: 0 2.5rem; height: 58px;
   }
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    color: var(--gold);
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  .nav-logo { font-family: 'DM Serif Display', serif; color: var(--sage-light); font-size: 1rem; letter-spacing: 0.1em; text-decoration: none; }
   .nav-right { display: flex; align-items: center; gap: 2rem; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--green-200);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 400;
-    transition: color 0.2s;
-    padding: 4px 0;
-    border-bottom: 1px solid transparent;
-  }
-  .nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--sage-light); }
 
-  /* ── LANG SWITCHER ── */
+  /* LANG */
   .lang-switcher { position: relative; }
-  .lang-btn {
-    background: none; border: 1px solid rgba(255,255,255,0.18);
-    color: var(--green-200);
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    display: flex; align-items: center; gap: 6px;
-    font-size: 0.78rem;
-    font-family: 'Pretendard', sans-serif;
-    letter-spacing: 0.04em;
-    transition: border-color 0.2s, color 0.2s;
-    white-space: nowrap;
-  }
-  .lang-btn:hover { color: var(--gold); border-color: var(--gold); }
-  .lang-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
-  .lang-dropdown {
-    display: none;
-    position: absolute; top: calc(100% + 8px); right: 0;
-    background: var(--green-800);
-    border: 1px solid var(--green-600);
-    border-radius: 6px;
-    overflow: hidden;
-    min-width: 130px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  }
-  .lang-switcher:hover .lang-dropdown,
-  .lang-switcher.open .lang-dropdown { display: block; }
-  .lang-option {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 14px;
-    color: var(--green-100);
-    font-size: 0.82rem;
-    font-family: 'Pretendard', sans-serif;
-    cursor: pointer;
-    transition: background 0.15s;
-    border: none; background: none; width: 100%; text-align: left;
-    white-space: nowrap;
-  }
-  .lang-option:hover { background: var(--green-700); color: var(--gold); }
-  .lang-option.active { color: var(--gold); font-weight: 500; }
-  .lang-flag { font-size: 1rem; }
+  .lang-btn { background: none; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); border-radius: 4px; padding: 6px 8px; cursor: pointer; display: flex; align-items: center; transition: border-color 0.2s, color 0.2s; }
+  .lang-btn:hover { color: var(--sage-light); border-color: var(--sage-light); }
+  .lang-btn svg { width: 16px; height: 16px; }
+  .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--dark-nav); border: 1px solid rgba(107,143,107,0.3); border-radius: 6px; overflow: hidden; min-width: 120px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .lang-switcher:hover .lang-dropdown, .lang-switcher.open .lang-dropdown { display: block; }
+  .lang-option { display: flex; align-items: center; gap: 8px; padding: 10px 14px; color: rgba(255,255,255,0.7); font-size: 0.82rem; cursor: pointer; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: 'Pretendard', sans-serif; }
+  .lang-option:hover { background: rgba(107,143,107,0.15); color: var(--sage-light); }
+  .lang-option.active { color: var(--sage-light); }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
-    min-height: 100vh;
-    background: var(--green-900);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    position: relative; overflow: hidden;
-    padding: 80px 2rem 4rem;
+    min-height: 100vh; background: var(--dark-nav);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    text-align: center; position: relative; overflow: hidden; padding: 80px 2rem 4rem;
   }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(39,160,94,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(39,160,94,0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
+  .hero-bg {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: radial-gradient(circle, var(--sage-light) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 6px 18px;
-    border-radius: 2px;
-    margin-bottom: 2rem;
-    position: relative; z-index: 1;
-    font-family: 'Pretendard', sans-serif;
+  .hero-leaf {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(107,143,107,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(107,143,107,0.06) 0%, transparent 60%);
   }
   .hero-name {
-    font-family: 'DM Serif Display', serif;
-    color: #fff;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    position: relative; z-index: 1;
-    margin-bottom: 0.6rem;
+    font-family: 'DM Serif Display', serif; color: #fff;
+    font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; line-height: 1.05;
+    position: relative; z-index: 1; margin-bottom: 1rem;
   }
-  .hero-name span { color: var(--green-300); }
-  .hero-sub {
-    color: var(--green-200);
-    font-size: 1rem;
-    letter-spacing: 0.06em;
-    position: relative; z-index: 1;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-    font-family: 'Pretendard', sans-serif;
-  }
-  .hero-divider {
-    width: 60px; height: 2px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-    margin: 0 auto 2.5rem;
-    position: relative; z-index: 1;
-  }
-  .hero-desc {
-    color: var(--green-100);
-    font-size: 1.05rem;
-    line-height: 1.9;
-    max-width: 560px;
-    position: relative; z-index: 1;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    font-family: 'Pretendard', sans-serif;
-  }
-  .hero-cta {
-    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-    position: relative; z-index: 1;
-  }
-  .btn-primary {
-    background: var(--green-500); color: #fff; border: none;
-    padding: 13px 32px;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 0.85rem; letter-spacing: 0.06em;
-    cursor: pointer; border-radius: 2px; text-decoration: none;
-    transition: background 0.2s, transform 0.15s; display: inline-block;
-  }
-  .btn-primary:hover { background: var(--green-600); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 13px 32px;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 0.85rem; letter-spacing: 0.06em;
-    cursor: pointer; border-radius: 2px; text-decoration: none;
-    transition: background 0.2s; display: inline-block;
-  }
-  .btn-outline:hover { background: rgba(201,168,76,0.1); }
+  .hero-name span { color: var(--sage-light); }
+  .hero-line { width: 48px; height: 1px; background: var(--terra-light); margin: 0 auto 2rem; position: relative; z-index: 1; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+  .btn-fill { background: var(--sage); color: #fff; border: none; padding: 12px 30px; font-family: 'Pretendard', sans-serif; font-size: 0.84rem; letter-spacing: 0.06em; cursor: pointer; border-radius: 2px; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-fill:hover { background: var(--sage-dark); }
+  .btn-ghost { background: transparent; color: var(--terra-light); border: 1px solid var(--terra-light); padding: 12px 30px; font-family: 'Pretendard', sans-serif; font-size: 0.84rem; letter-spacing: 0.06em; cursor: pointer; border-radius: 2px; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-ghost:hover { background: rgba(184,115,85,0.1); }
 
-  /* ── SECTION COMMON ── */
+  /* SECTION */
   section { padding: 80px 2rem; }
-  .section-inner { max-width: 900px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--green-500); font-weight: 500; margin-bottom: 0.5rem;
-    font-family: 'Pretendard', sans-serif;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem; color: var(--text-main);
-    margin-bottom: 0.5rem; font-weight: 400;
-  }
-  .section-line { width: 40px; height: 2px; background: var(--green-500); margin-bottom: 3rem; }
+  .section-inner { max-width: 920px; margin: 0 auto; }
+  .sec-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.4rem; font-family: 'Pretendard', sans-serif; }
+  .sec-title { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--text); margin-bottom: 0.4rem; font-weight: 400; }
+  .sec-line { width: 36px; height: 2px; background: var(--terra); margin-bottom: 2.8rem; }
 
-  /* ── ABOUT ── */
-  #about { background: #fff; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .about-text p { color: var(--text-sub); line-height: 1.95; margin-bottom: 1rem; font-size: 0.95rem; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
-  .stat-card {
-    background: var(--green-50); border: 1px solid var(--border);
-    border-left: 3px solid var(--green-500);
-    padding: 1.2rem; border-radius: 2px;
-  }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--green-700); font-weight: 400; }
-  .stat-desc { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
+  /* ABOUT */
+  #about { background: var(--warm-white); }
+  .about-text p { color: var(--text-sub); line-height: 2; font-size: 0.95rem; max-width: 640px; }
 
-  /* ── SKILLS ── */
+  /* SKILLS */
   #skills { background: var(--cream); }
-  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .skill-card {
-    background: #fff; border: 1px solid var(--border);
-    border-top: 3px solid var(--green-500);
-    padding: 1.5rem; border-radius: 2px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .skill-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(15,68,39,0.08); }
-  .skill-cat { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-500); margin-bottom: 0.8rem; font-weight: 500; }
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .skill-card { background: var(--warm-white); border: 1px solid var(--border); border-top: 2px solid var(--sage); padding: 1.4rem; border-radius: 2px; transition: transform 0.2s; }
+  .skill-card:hover { transform: translateY(-2px); }
+  .skill-cat { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.8rem; font-weight: 500; }
   .skill-list { list-style: none; }
-  .skill-list li {
-    font-size: 0.88rem; color: var(--text-sub);
-    padding: 5px 0; border-bottom: 1px solid var(--green-50);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .skill-list li::before { content: ''; width: 5px; height: 5px; background: var(--green-400); border-radius: 50%; flex-shrink: 0; }
+  .skill-list li { font-size: 0.87rem; color: var(--text-sub); padding: 5px 0; border-bottom: 1px solid var(--sage-50); display: flex; align-items: center; gap: 8px; }
+  .skill-list li::before { content: ''; width: 4px; height: 4px; background: var(--sage-light); border-radius: 50%; flex-shrink: 0; }
 
-  /* ── EXPERIENCE ── */
-  #experience { background: #fff; }
-  .timeline { position: relative; padding-left: 2rem; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 0; width: 1px; background: var(--border); }
-  .timeline-item { position: relative; margin-bottom: 2.5rem; }
-  .timeline-dot {
-    position: absolute; left: -2.38rem; top: 4px;
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--green-500); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--green-500);
+  /* CARD NEWS */
+  #cardnews { background: var(--warm-white); }
+  .cn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .cn-card {
+    border-radius: 4px; overflow: hidden; cursor: pointer;
+    transition: transform 0.22s, box-shadow 0.22s;
+    border: 1px solid var(--border);
   }
-  .timeline-period { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-500); font-weight: 500; margin-bottom: 0.3rem; }
-  .timeline-title { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--text-main); font-weight: 400; margin-bottom: 0.15rem; }
-  .timeline-org { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.6rem; }
-  .timeline-desc { font-size: 0.88rem; color: var(--text-sub); line-height: 1.8; }
+  .cn-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(44,62,45,0.1); }
+  .cn-top {
+    padding: 1.6rem 1.4rem 1.2rem; min-height: 160px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .cn-top-num { font-family: 'DM Serif Display', serif; font-size: 4rem; font-weight: 400; opacity: 0.08; position: absolute; right: 8px; bottom: -8px; line-height: 1; color: #fff; }
+  .cn-cat { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.8; font-weight: 500; margin-bottom: 0.6rem; }
+  .cn-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #fff; font-weight: 400; line-height: 1.35; position: relative; z-index: 1; }
+  .cn-body { background: var(--warm-white); padding: 1.2rem 1.4rem; }
+  .cn-desc { font-size: 0.83rem; color: var(--text-sub); line-height: 1.75; margin-bottom: 0.8rem; }
+  .cn-read { font-size: 0.72rem; color: var(--sage); font-weight: 500; letter-spacing: 0.06em; display: flex; align-items: center; gap: 4px; }
+  .cn-read svg { width: 12px; height: 12px; transition: transform 0.2s; }
+  .cn-card:hover .cn-read svg { transform: translateX(3px); }
 
-  /* ── PROJECTS ── */
+  /* CARD NEWS MODAL */
+  .cn-modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(30,44,31,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 2rem; }
+  .cn-modal-overlay.open { display: flex; }
+  .cn-modal { background: var(--warm-white); border-radius: 6px; width: 100%; max-width: 600px; max-height: 85vh; overflow-y: auto; animation: fadeUp 0.22s ease; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+  .cn-modal-head { padding: 2rem 2rem 1.5rem; position: relative; border-bottom: 1px solid var(--border); }
+  .cn-modal-cat { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.4rem; }
+  .cn-modal-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--text); font-weight: 400; }
+  .cn-modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-sub); font-size: 1.1rem; transition: background 0.15s; }
+  .cn-modal-close:hover { background: var(--cream2); }
+  .cn-modal-body { padding: 1.5rem 2rem 2rem; }
+  .cn-modal-section { margin-bottom: 1.4rem; }
+  .cn-modal-stitle { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); font-weight: 500; margin-bottom: 0.6rem; }
+  .cn-modal-text { font-size: 0.9rem; color: var(--text-sub); line-height: 1.9; }
+  .cn-modal-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .cn-modal-list li { font-size: 0.88rem; color: var(--text-sub); line-height: 1.75; display: flex; gap: 8px; }
+  .cn-modal-list li::before { content: '→'; color: var(--sage); flex-shrink: 0; }
+
+  /* PROJECTS */
   #projects { background: var(--cream); }
-  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .pj-card {
-    background: #fff; border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
-    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-    display: flex; flex-direction: column;
-  }
-  .pj-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(15,68,39,0.12); }
-  .pj-header {
-    height: 110px; position: relative; overflow: hidden;
-    display: flex; align-items: flex-end; padding: 1rem;
-  }
-  .pj-grid-bg {
-    position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-  .pj-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3.5rem; font-weight: 400; line-height: 1;
-    opacity: 0.18; position: absolute; right: 12px; top: 8px; color: #fff;
-  }
-  .pj-badge {
-    position: relative; z-index: 1;
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-    color: #fff; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 3px 10px; border-radius: 2px; backdrop-filter: blur(4px);
-  }
-  .pj-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
-  .pj-title { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--text-main); font-weight: 400; line-height: 1.4; }
-  .pj-desc { font-size: 0.8rem; color: var(--text-sub); line-height: 1.7; flex: 1; }
-  .pj-stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; padding-top: 0.6rem; }
-  .pj-tag {
-    font-size: 0.65rem; background: var(--green-50); color: var(--green-700);
-    border: 1px solid var(--border); padding: 2px 8px; border-radius: 2px; letter-spacing: 0.05em;
-  }
-  .pj-footer {
-    padding: 0.8rem 1.2rem; border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .pj-detail-btn {
-    font-size: 0.75rem; color: var(--green-600); font-weight: 500;
-    display: flex; align-items: center; gap: 4px; letter-spacing: 0.04em;
-  }
-  .pj-detail-btn svg { width: 13px; height: 13px; transition: transform 0.2s; }
-  .pj-card:hover .pj-detail-btn svg { transform: translateX(3px); }
-  .pj-github { font-size: 0.72rem; color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
-  .pj-github:hover { color: var(--green-600); }
+  .pj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .pj-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.22s, box-shadow 0.22s; display: flex; flex-direction: column; }
+  .pj-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(44,62,45,0.1); }
+  .pj-head { height: 100px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 1rem; }
+  .pj-head-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 18px 18px; }
+  .pj-num-bg { font-family: 'DM Serif Display', serif; font-size: 3.5rem; opacity: 0.12; position: absolute; right: 10px; top: 4px; color: #fff; line-height: 1; }
+  .pj-badge { position: relative; z-index: 1; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+  .pj-body { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+  .pj-title { font-family: 'DM Serif Display', serif; font-size: 0.92rem; color: var(--text); font-weight: 400; line-height: 1.4; }
+  .pj-desc { font-size: 0.79rem; color: var(--text-sub); line-height: 1.7; flex: 1; }
+  .pj-stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; padding-top: 0.5rem; }
+  .pj-tag { font-size: 0.63rem; background: var(--sage-50); color: var(--sage-dark); border: 1px solid var(--sage-pale); padding: 2px 7px; border-radius: 2px; }
+  .pj-foot { padding: 0.7rem 1.1rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .pj-more { font-size: 0.73rem; color: var(--sage-dark); font-weight: 500; display: flex; align-items: center; gap: 4px; }
+  .pj-more svg { width: 12px; height: 12px; transition: transform 0.2s; }
+  .pj-card:hover .pj-more svg { transform: translateX(3px); }
+  .pj-gh { font-size: 0.7rem; color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+  .pj-gh:hover { color: var(--sage); }
 
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(10,46,26,0.7); backdrop-filter: blur(4px);
-    align-items: center; justify-content: center; padding: 2rem;
-  }
+  /* PROJECT MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(30,44,31,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 2rem; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: #fff; border-radius: 6px; width: 100%; max-width: 680px;
-    max-height: 85vh; overflow-y: auto; position: relative;
-    animation: modalIn 0.25s ease;
-  }
-  @keyframes modalIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: none; } }
-  .modal-header {
-    padding: 2rem 2rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-  .modal-num { font-family: 'DM Serif Display', serif; font-size: 0.75rem; color: var(--green-500); letter-spacing: 0.15em; margin-bottom: 0.4rem; }
-  .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--text-main); font-weight: 400; margin-bottom: 0.8rem; }
-  .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .modal-tag {
-    font-size: 0.7rem; background: var(--green-50); color: var(--green-700);
-    border: 1px solid var(--border); padding: 3px 10px; border-radius: 2px;
-  }
-  .modal-close {
-    position: absolute; top: 1.2rem; right: 1.2rem;
-    background: none; border: none; cursor: pointer;
-    width: 32px; height: 32px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-sub); transition: background 0.15s;
-    font-size: 1.2rem; line-height: 1;
-  }
-  .modal-close:hover { background: var(--green-50); color: var(--text-main); }
+  .modal { background: var(--warm-white); border-radius: 6px; width: 100%; max-width: 660px; max-height: 85vh; overflow-y: auto; animation: fadeUp 0.22s ease; }
+  .modal-header { padding: 2rem 2rem 1.4rem; border-bottom: 1px solid var(--border); position: relative; }
+  .modal-num { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.4rem; }
+  .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--text); font-weight: 400; margin-bottom: 0.8rem; }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .modal-tag { font-size: 0.68rem; background: var(--sage-50); color: var(--sage-dark); border: 1px solid var(--sage-pale); padding: 3px 9px; border-radius: 2px; }
+  .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-sub); font-size: 1.1rem; transition: background 0.15s; }
+  .modal-close:hover { background: var(--cream2); }
   .modal-body { padding: 1.5rem 2rem 2rem; }
-  .modal-section { margin-bottom: 1.5rem; }
-  .modal-section-title {
-    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--green-500); font-weight: 500; margin-bottom: 0.7rem;
-    padding-bottom: 0.4rem; border-bottom: 1px solid var(--green-50);
-  }
+  .modal-section { margin-bottom: 1.4rem; }
+  .modal-stitle { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); font-weight: 500; margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--terra-pale); }
   .modal-text { font-size: 0.9rem; color: var(--text-sub); line-height: 1.85; }
   .modal-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .modal-list li { font-size: 0.88rem; color: var(--text-sub); line-height: 1.7; display: flex; gap: 8px; }
-  .modal-list li::before { content: '→'; color: var(--green-400); flex-shrink: 0; }
+  .modal-list li { font-size: 0.87rem; color: var(--text-sub); line-height: 1.75; display: flex; gap: 8px; }
+  .modal-list li::before { content: '→'; color: var(--sage); flex-shrink: 0; }
   .modal-footer { padding: 1rem 2rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
-  .modal-gh-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--green-900); color: var(--green-200);
-    text-decoration: none; padding: 10px 20px; border-radius: 4px;
-    font-size: 0.82rem; letter-spacing: 0.05em; transition: background 0.2s;
-  }
-  .modal-gh-btn:hover { background: var(--green-700); }
+  .modal-gh-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--dark-nav); color: var(--sage-light); text-decoration: none; padding: 10px 20px; border-radius: 4px; font-size: 0.82rem; transition: background 0.2s; }
+  .modal-gh-btn:hover { background: var(--sage-dark); }
   .modal-gh-btn svg { width: 15px; height: 15px; }
 
-  /* ── CONTACT ── */
-  #contact { background: var(--green-900); color: #fff; }
-  #contact .section-title { color: #fff; }
-  #contact .section-label { color: var(--green-300); }
-  #contact .section-line { background: var(--gold); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .contact-info p { color: var(--green-100); font-size: 0.95rem; line-height: 1.9; font-weight: 300; margin-bottom: 2rem; }
-  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 0.8rem;
-    color: var(--green-200); text-decoration: none; font-size: 0.88rem;
-    transition: color 0.2s; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .contact-link:hover { color: var(--gold); }
-  .contact-icon {
-    width: 32px; height: 32px; background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12); border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; font-weight: 700; flex-shrink: 0; color: var(--green-300);
-  }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-form input, .contact-form textarea {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
-    color: #fff; padding: 12px 16px;
-    font-family: 'Pretendard', sans-serif; font-size: 0.88rem;
-    border-radius: 2px; outline: none; transition: border-color 0.2s;
-  }
-  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
-  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--green-400); }
-  .contact-form textarea { resize: vertical; min-height: 120px; }
-
-  footer {
-    background: var(--dark); padding: 1.5rem 2rem; text-align: center;
-    font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  .tropic { position: absolute; pointer-events: none; }
+  .tropic-left { left: -30px; bottom: 0; width: 340px; height: 560px; }
+  .tropic-right { right: -30px; bottom: 0; width: 360px; height: 600px; }
+  .tropic-bottom-left { left: 260px; bottom: 0; width: 220px; height: 160px; }
+  .tropic-bottom-right { right: 260px; bottom: 0; width: 220px; height: 160px; }
+  @media (max-width: 720px) {
+    .tropic-left { width: 200px; height: 360px; left: -15px; }
+    .tropic-right { width: 210px; height: 380px; right: -15px; }
+    .tropic-bottom-left, .tropic-bottom-right { display: none; }
   }
 
-  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
+  #journey { background: var(--warm-white); }
+  .journey-header { margin-bottom: 2.5rem; }
+  .journey-camp {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--sage-50); border: 1px solid var(--sage-pale);
+    color: var(--sage-dark); font-size: 0.78rem; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px; margin-bottom: 1rem;
+  }
+  .journey-camp-dot { width: 6px; height: 6px; background: var(--sage); border-radius: 50%; }
+  .journey-phases { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .journey-phases::before {
+    content: ''; position: absolute; left: 120px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .journey-phase { display: flex; gap: 2rem; padding: 1.6rem 0; position: relative; }
+  .journey-phase:not(:last-child) { border-bottom: 1px solid var(--sage-50); }
+  .journey-period {
+    width: 110px; flex-shrink: 0; text-align: right;
+    font-size: 0.72rem; color: var(--text-sub); letter-spacing: 0.04em;
+    padding-top: 3px; line-height: 1.5;
+  }
+  .journey-dot-wrap {
+    position: relative; flex-shrink: 0;
+    display: flex; align-items: flex-start; padding-top: 4px;
+  }
+  .journey-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--warm-white); border: 2px solid var(--sage);
+    position: relative; z-index: 1; flex-shrink: 0;
+    margin: 0 calc(1rem - 5px);
+  }
+  .journey-content { flex: 1; }
+  .journey-phase-title {
+    font-family: 'DM Serif Display', serif; font-size: 1rem;
+    color: var(--text); font-weight: 400; margin-bottom: 0.35rem;
+  }
+  .journey-phase-desc { font-size: 0.82rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 0.7rem; }
+  .journey-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .journey-tag {
+    font-size: 0.65rem; background: var(--cream); color: var(--text-sub);
+    border: 1px solid var(--border); padding: 2px 8px; border-radius: 2px;
+    font-family: 'Pretendard', monospace;
+  }
+  .journey-tag.hl { background: var(--sage-50); color: var(--sage-dark); border-color: var(--sage-pale); }
+
+
+  #contact { background: var(--dark-nav); }
+  #contact .sec-title { color: #fff; }
+  #contact .sec-label { color: var(--sage-light); }
+  #contact .sec-line { background: var(--terra); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.7rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.8rem; color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.87rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+  .contact-link:hover { color: var(--sage-light); }
+  .contact-icon { width: 30px; height: 30px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; color: var(--sage-light); }
+  .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+  .contact-form input, .contact-form textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 11px 14px; font-family: 'Pretendard', sans-serif; font-size: 0.87rem; border-radius: 2px; outline: none; transition: border-color 0.2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--sage-light); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+
+  footer { background: #141E15; padding: 1.4rem 2rem; text-align: center; font-size: 0.73rem; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
+
+  .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .fade-up.visible { opacity: 1; transform: none; }
 
   @media (max-width: 720px) {
     nav { padding: 0 1.2rem; }
     .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.72rem; }
-    .about-grid, .contact-grid, .projects-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
-    .about-stats { grid-template-columns: 1fr 1fr 1fr; }
+    .cn-grid, .pj-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .cn-grid, .pj-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">PORTFOLIO</a>
+  <a class="nav-logo" href="#hero">KSH</a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#about"    data-i18n="nav.about">About</a></li>
-      <li><a href="#skills"   data-i18n="nav.skills">Skills</a></li>
-      <li><a href="#experience" data-i18n="nav.experience">Career</a></li>
-      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-      <li><a href="#contact"  data-i18n="nav.contact">Contact</a></li>
+      <li><a href="#journey" data-i18n="nav.journey">학습여정</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">프로젝트</a></li>
+      <li><a href="#cardnews" data-i18n="nav.cardnews">카드뉴스</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">연락처</a></li>
     </ul>
-
-    <!-- GLOBE LANG SWITCHER -->
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="언어 선택">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
         </svg>
-        <span id="langCurrent">한국어</span>
       </button>
       <div class="lang-dropdown" id="langDropdown">
-        <button class="lang-option active" data-lang="ko">
-          <span class="lang-flag">🇰🇷</span> 한국어
-        </button>
-        <button class="lang-option" data-lang="en">
-          <span class="lang-flag">🇺🇸</span> English
-        </button>
+        <button class="lang-option active" data-lang="ko">🇰🇷 한국어</button>
+        <button class="lang-option" data-lang="en">🇺🇸 English</button>
       </div>
     </div>
   </div>
@@ -456,106 +307,196 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-badge" data-i18n="hero.badge">Finance &amp; Banking Portfolio</div>
-  <h1 class="hero-name" data-i18n-html="hero.name">안녕하세요,<br>저는 <span>김서현</span>입니다</h1>
-  <div class="hero-divider"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-leaf"></div>
+
+  <!-- 열대 식물 장식 -->
+  <!-- 왼쪽 -->
+  <svg class="tropic tropic-left" viewBox="0 0 340 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- 야자수 줄기 -->
+    <path d="M90 560 Q85 460 100 380 Q115 300 150 240" stroke="#2a5230" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <!-- 야자잎 1 (왼쪽 위) -->
+    <path d="M148 242 Q100 190 40 170 Q0 158 -20 170 Q-10 155 30 148 Q80 138 140 168 Q160 178 165 200 Z" fill="#3d7a42" opacity="0.75"/>
+    <path d="M148 242 Q100 190 40 170" stroke="#2d5c31" stroke-width="3" fill="none" opacity="0.5"/>
+    <!-- 야자잎 2 (오른쪽 위) -->
+    <path d="M152 238 Q200 180 260 160 Q300 148 330 158 Q318 145 280 140 Q230 132 172 162 Q152 172 148 198 Z" fill="#4a8a50" opacity="0.7"/>
+    <path d="M152 238 Q200 180 260 160" stroke="#2d5c31" stroke-width="3" fill="none" opacity="0.5"/>
+    <!-- 야자잎 3 (왼쪽 중) -->
+    <path d="M120 310 Q70 280 20 280 Q-20 280 -30 298 Q-15 282 20 275 Q75 265 118 295 Q125 302 122 315 Z" fill="#3d7a42" opacity="0.65"/>
+    <!-- 야자잎 4 (오른쪽 중) -->
+    <path d="M130 305 Q180 270 240 262 Q280 256 300 268 Q285 254 250 250 Q200 244 128 278 Q120 285 122 300 Z" fill="#4a8a50" opacity="0.6"/>
+    <!-- 큰 몬스테라 잎 좌측 하단 -->
+    <path d="M0 560 Q-15 460 30 380 Q65 315 120 295 Q165 278 185 305 Q202 330 185 370 Q168 405 138 425 Q112 443 100 480 Q88 518 95 560 Z" fill="#3d7a42" opacity="0.65"/>
+    <path d="M60 380 Q28 362 18 330 Q10 305 28 288" stroke="#2a5230" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M95 415 Q60 408 42 380 Q28 356 40 332" stroke="#2a5230" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M118 445 Q88 450 70 425 Q54 402 65 376" stroke="#2a5230" stroke-width="2" fill="none" opacity="0.5"/>
+    <!-- 작은 잎 앞쪽 -->
+    <path d="M-10 480 Q25 420 75 400 Q110 385 128 408 Q140 428 122 455 Q104 480 70 488 Q32 496 -10 480 Z" fill="#5a9e60" opacity="0.55"/>
+    <!-- 뾰족한 열대잎 -->
+    <path d="M0 420 Q15 350 45 300 Q68 262 85 268 Q95 272 88 300 Q80 330 60 360 Q40 390 0 420 Z" fill="#4a8a50" opacity="0.5"/>
+  </svg>
+
+  <!-- 오른쪽 -->
+  <svg class="tropic tropic-right" viewBox="0 0 360 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- 야자수 줄기 -->
+    <path d="M270 600 Q275 495 258 408 Q242 325 208 262" stroke="#2a5230" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <!-- 야자잎 1 (오른쪽 위) -->
+    <path d="M210 264 Q262 205 325 182 Q365 168 385 180 Q372 165 332 158 Q278 148 212 178 Q192 190 188 215 Z" fill="#3d7a42" opacity="0.75"/>
+    <path d="M210 264 Q262 205 325 182" stroke="#2d5c31" stroke-width="3" fill="none" opacity="0.5"/>
+    <!-- 야자잎 2 (왼쪽 위) -->
+    <path d="M205 260 Q152 195 88 172 Q45 158 18 168 Q32 152 75 148 Q130 138 192 168 Q212 180 215 205 Z" fill="#4a8a50" opacity="0.7"/>
+    <path d="M205 260 Q152 195 88 172" stroke="#2d5c31" stroke-width="3" fill="none" opacity="0.5"/>
+    <!-- 야자잎 3 오른쪽 중 -->
+    <path d="M245 330 Q298 298 348 295 Q382 292 395 310 Q380 294 345 288 Q290 280 242 312 Q234 320 237 332 Z" fill="#3d7a42" opacity="0.65"/>
+    <!-- 야자잎 4 왼쪽 중 -->
+    <path d="M235 325 Q182 288 120 280 Q78 274 62 286 Q78 272 115 268 Q168 260 238 296 Q246 304 242 318 Z" fill="#4a8a50" opacity="0.6"/>
+    <!-- 큰 몬스테라 잎 우측 하단 -->
+    <path d="M360 600 Q378 495 330 412 Q292 342 240 320 Q193 302 172 330 Q154 356 172 396 Q190 432 222 452 Q248 468 260 506 Q272 545 265 600 Z" fill="#3d7a42" opacity="0.65"/>
+    <path d="M298 415 Q332 395 340 362 Q346 335 328 318" stroke="#2a5230" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M262 450 Q298 440 314 410 Q328 384 314 360" stroke="#2a5230" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M240 478 Q270 482 286 456 Q300 432 288 406" stroke="#2a5230" stroke-width="2" fill="none" opacity="0.5"/>
+    <!-- 작은 잎 앞쪽 -->
+    <path d="M370 510 Q332 448 280 426 Q244 410 226 434 Q214 455 232 480 Q250 505 286 512 Q328 520 370 510 Z" fill="#5a9e60" opacity="0.55"/>
+    <!-- 뾰족한 열대잎 -->
+    <path d="M360 455 Q342 382 310 330 Q286 290 268 295 Q258 300 266 328 Q274 358 296 390 Q318 420 360 455 Z" fill="#4a8a50" opacity="0.5"/>
+  </svg>
+
+  <!-- 하단 풀잎 왼쪽 -->
+  <svg class="tropic tropic-bottom-left" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0 160 Q40 100 95 75 Q135 55 165 78 Q185 96 165 125 Q145 150 105 158 Q58 165 0 160 Z" fill="#4a8a50" opacity="0.5"/>
+    <path d="M50 160 Q105 88 168 65 Q205 50 218 72 Q226 92 206 118 Q185 142 148 152 Q102 162 50 160 Z" fill="#3d7a42" opacity="0.42"/>
+    <path d="M0 130 Q30 95 68 82 Q95 72 108 90" stroke="#2d5c31" stroke-width="2" fill="none" opacity="0.4"/>
+  </svg>
+
+  <!-- 하단 풀잎 오른쪽 -->
+  <svg class="tropic tropic-bottom-right" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M220 160 Q178 100 122 75 Q82 55 52 78 Q32 96 52 125 Q72 150 112 158 Q160 165 220 160 Z" fill="#4a8a50" opacity="0.5"/>
+    <path d="M168 160 Q112 88 48 65 Q10 50 -2 72 Q-10 92 10 118 Q32 142 70 152 Q116 162 168 160 Z" fill="#3d7a42" opacity="0.42"/>
+    <path d="M220 130 Q188 95 148 82 Q120 72 108 90" stroke="#2d5c31" stroke-width="2" fill="none" opacity="0.4"/>
+  </svg>
+
+  <h1 class="hero-name" data-i18n-html="hero.name">김서현 <span>포트폴리오</span></h1>
+  <div class="hero-line"></div>
   <div class="hero-cta">
-    <a href="#projects" class="btn-primary" data-i18n="hero.cta1">프로젝트 보기</a>
-    <a href="#contact" class="btn-outline" data-i18n="hero.cta2">연락하기</a>
+    <a href="#projects" class="btn-fill" data-i18n="hero.cta1">프로젝트 보기</a>
+    <a href="#contact" class="btn-ghost" data-i18n="hero.cta2">연락하기</a>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- JOURNEY -->
+<section id="journey">
   <div class="section-inner">
-    <p class="section-label" data-i18n="about.label">About Me</p>
-    <h2 class="section-title" data-i18n="about.title">자기소개</h2>
-    <div class="section-line"></div>
-    <div class="about-grid fade-up">
-      <div class="about-text">
-        <p data-i18n="about.p1">금융 및 경제학을 전공하며 은행과 증권 분야에 깊은 관심을 키워온 취업 준비생입니다. 금융 데이터 분석과 리스크 관리에 특히 흥미를 느끼며, 관련 프로젝트와 인턴십 경험을 쌓아왔습니다.</p>
-        <p data-i18n="about.p2">숫자와 데이터 뒤에 숨겨진 시장의 흐름을 읽고, 이를 실제 의사결정에 연결하는 일에서 보람을 느낍니다. 팀워크와 소통 능력을 바탕으로 금융 현장에 빠르게 기여하고자 합니다.</p>
-
-      </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">3+</div>
-          <div class="stat-desc" data-i18n="about.stat1">금융 관련 프로젝트</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">2개</div>
-          <div class="stat-desc" data-i18n="about.stat2">금융 관련 자격증</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">OO대</div>
-          <div class="stat-desc" data-i18n="about.stat3">경제/경영학부 재학</div>
-        </div>
+    <p class="sec-label" data-i18n="journey.label">Education</p>
+    <h2 class="sec-title" data-i18n="journey.title">학습 여정</h2>
+    <div class="sec-line"></div>
+    <div class="journey-header fade-up">
+      <div class="journey-camp">
+        <span class="journey-camp-dot"></span>
+        <span data-i18n="journey.camp">SK Networks AI Camp 25기 &nbsp;·&nbsp; 2025.12 – 2026.06</span>
       </div>
     </div>
-  </div>
-</section>
+    <div class="journey-phases fade-up">
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <p class="section-label" data-i18n="skills.label">Skills &amp; Qualifications</p>
-    <h2 class="section-title" data-i18n="skills.title">보유 역량</h2>
-    <div class="section-line"></div>
-    <div class="skills-grid fade-up">
-      <div class="skill-card">
-        <div class="skill-cat" data-i18n="skills.cat1">금융 지식</div>
-        <ul class="skill-list">
-          <li data-i18n="skills.s1_1">재무제표 분석</li>
-          <li data-i18n="skills.s1_2">주식 · 채권 기초</li>
-          <li data-i18n="skills.s1_3">리스크 관리 개념</li>
-          <li data-i18n="skills.s1_4">파생상품 기초</li>
-          <li data-i18n="skills.s1_5">거시경제 분석</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <div class="skill-cat" data-i18n="skills.cat2">분석 도구</div>
-        <ul class="skill-list">
-          <li data-i18n="skills.s2_1">Excel / 재무 모델링</li>
-          <li data-i18n="skills.s2_2">Python (pandas, numpy)</li>
-          <li data-i18n="skills.s2_3">SQL 기초</li>
-          <li data-i18n="skills.s2_4">Bloomberg 기초</li>
-          <li data-i18n="skills.s2_5">PowerPoint / 보고서 작성</li>
-        </ul>
+      <div class="journey-phase">
+        <div class="journey-period" data-i18n="journey.p1_period">2025.12<br>~ 2026.01</div>
+        <div class="journey-dot-wrap"><div class="journey-dot"></div></div>
+        <div class="journey-content">
+          <div class="journey-phase-title" data-i18n="journey.p1_title">Python & 데이터 수집</div>
+          <p class="journey-phase-desc" data-i18n="journey.p1_desc">Python 환경 구축부터 시작해 기본 문법, 자료구조, 함수/클래스를 익히고 웹 크롤링과 API 연동을 통해 실제 데이터를 수집하는 파이프라인을 구현했습니다.</p>
+          <div class="journey-tags">
+            <span class="journey-tag hl">Python</span>
+            <span class="journey-tag hl">requests</span>
+            <span class="journey-tag hl">Selenium</span>
+            <span class="journey-tag hl">BeautifulSoup</span>
+            <span class="journey-tag">Jupyter</span>
+            <span class="journey-tag">JSON / API</span>
+            <span class="journey-tag">FastAPI 기초</span>
+            <span class="journey-tag">Conda 환경</span>
+          </div>
+        </div>
       </div>
 
-    </div>
-  </div>
-</section>
+      <div class="journey-phase">
+        <div class="journey-period" data-i18n="journey.p2_period">2026.01<br>~ 2026.02</div>
+        <div class="journey-dot-wrap"><div class="journey-dot"></div></div>
+        <div class="journey-content">
+          <div class="journey-phase-title" data-i18n="journey.p2_title">데이터 분석 & 시각화</div>
+          <p class="journey-phase-desc" data-i18n="journey.p2_desc">대용량 데이터를 정제·가공하고 통계 분석 및 시각화를 통해 인사이트를 도출했습니다. SQL로 데이터베이스를 설계하고 Docker 기반 환경을 구성했습니다.</p>
+          <div class="journey-tags">
+            <span class="journey-tag hl">pandas</span>
+            <span class="journey-tag hl">numpy</span>
+            <span class="journey-tag hl">matplotlib</span>
+            <span class="journey-tag hl">seaborn</span>
+            <span class="journey-tag hl">SQL</span>
+            <span class="journey-tag">MySQL</span>
+            <span class="journey-tag">Docker</span>
+            <span class="journey-tag">sqlalchemy</span>
+            <span class="journey-tag">Folium</span>
+          </div>
+        </div>
+      </div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <p class="section-label" data-i18n="exp.label">Experience &amp; Education</p>
-    <h2 class="section-title" data-i18n="exp.title">경력 및 학력</h2>
-    <div class="section-line"></div>
-    <div class="timeline fade-up">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">2024.07 — 2024.08</div>
-        <div class="timeline-title" data-i18n="exp.t1_title">○○은행 인턴십</div>
-        <div class="timeline-org" data-i18n="exp.t1_org">리테일금융본부 · 서울</div>
-        <div class="timeline-desc" data-i18n="exp.t1_desc">고객 포트폴리오 분석 보조 업무 수행. 예금/대출 상품 데이터 정리 및 시각화 보고서 작성. 고객 응대 프로세스 이해.</div>
+      <div class="journey-phase">
+        <div class="journey-period" data-i18n="journey.p3_period">2026.02<br>~ 2026.03</div>
+        <div class="journey-dot-wrap"><div class="journey-dot"></div></div>
+        <div class="journey-content">
+          <div class="journey-phase-title" data-i18n="journey.p3_title">머신러닝 & 딥러닝</div>
+          <p class="journey-phase-desc" data-i18n="journey.p3_desc">지도학습·비지도학습 알고리즘을 구현하고, PyTorch로 CNN 기반 이미지 분류 모델을 직접 설계·학습했습니다. MLflow로 실험을 추적하고 모델 성능을 최적화했습니다.</p>
+          <div class="journey-tags">
+            <span class="journey-tag hl">scikit-learn</span>
+            <span class="journey-tag hl">PyTorch</span>
+            <span class="journey-tag hl">CNN</span>
+            <span class="journey-tag hl">MLflow</span>
+            <span class="journey-tag">VGG16</span>
+            <span class="journey-tag">SMOTE</span>
+            <span class="journey-tag">XGBoost</span>
+            <span class="journey-tag">GridSearchCV</span>
+            <span class="journey-tag">PCA</span>
+          </div>
+        </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period" data-i18n="exp.t2_period">2023.09 — 현재</div>
-        <div class="timeline-title" data-i18n="exp.t2_title">금융경제학회 부원</div>
-        <div class="timeline-org" data-i18n="exp.t2_org">○○대학교 경제학과 학술동아리</div>
-        <div class="timeline-desc" data-i18n="exp.t2_desc">주간 시황 분석 발표 및 모의 포트폴리오 운용. 학회지 논문 1편 기고.</div>
+
+      <div class="journey-phase">
+        <div class="journey-period" data-i18n="journey.p4_period">2026.03<br>~ 2026.04</div>
+        <div class="journey-dot-wrap"><div class="journey-dot"></div></div>
+        <div class="journey-content">
+          <div class="journey-phase-title" data-i18n="journey.p4_title">LLM & RAG & AI Agent</div>
+          <p class="journey-phase-desc" data-i18n="journey.p4_desc">LangChain으로 RAG 파이프라인을 구축하고, 벡터 DB에 문서를 임베딩하여 검색 기반 AI 서비스를 개발했습니다. Agent를 설계해 멀티스텝 워크플로를 자동화했습니다.</p>
+          <div class="journey-tags">
+            <span class="journey-tag hl">LangChain</span>
+            <span class="journey-tag hl">OpenAI API</span>
+            <span class="journey-tag hl">ChromaDB</span>
+            <span class="journey-tag hl">RAG</span>
+            <span class="journey-tag hl">AI Agent</span>
+            <span class="journey-tag">HuggingFace</span>
+            <span class="journey-tag">EnsembleRetriever</span>
+            <span class="journey-tag">vLLM</span>
+            <span class="journey-tag">CLIP</span>
+            <span class="journey-tag">Prompt Engineering</span>
+          </div>
+        </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period" data-i18n="exp.t3_period">2021.03 — 현재</div>
-        <div class="timeline-title" data-i18n="exp.t3_title">경제학부 재학</div>
-        <div class="timeline-org">○○대학교</div>
-        <div class="timeline-desc" data-i18n="exp.t3_desc">금융경제학 전공. 주요 이수 과목: 금융시장론, 투자론, 파생상품론, 계량경제학, 기업재무론.</div>
+
+      <div class="journey-phase">
+        <div class="journey-period" data-i18n="journey.p5_period">2026.04<br>~ 2026.06</div>
+        <div class="journey-dot-wrap"><div class="journey-dot" style="border-color: var(--terra);"></div></div>
+        <div class="journey-content">
+          <div class="journey-phase-title" data-i18n="journey.p5_title">풀스택 웹 개발 & 배포</div>
+          <p class="journey-phase-desc" data-i18n="journey.p5_desc">Django REST API와 React 프론트엔드를 연동한 풀스택 서비스를 구현하고, Docker Compose로 컨테이너 환경을 구성했습니다. WebSocket 기반 실시간 통신도 구현했습니다.</p>
+          <div class="journey-tags">
+            <span class="journey-tag hl">Django</span>
+            <span class="journey-tag hl">React</span>
+            <span class="journey-tag hl">FastAPI</span>
+            <span class="journey-tag hl">Docker</span>
+            <span class="journey-tag">TypeScript</span>
+            <span class="journey-tag">WebSocket</span>
+            <span class="journey-tag">Tailwind CSS</span>
+            <span class="journey-tag">gunicorn</span>
+            <span class="journey-tag">Zustand</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -563,116 +504,103 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
-    <p class="section-label" data-i18n="proj.label">Projects</p>
-    <h2 class="section-title" data-i18n="proj.title">프로젝트</h2>
-    <div class="section-line"></div>
-    <div class="projects-grid fade-up">
+    <p class="sec-label" data-i18n="proj.label">Projects</p>
+    <h2 class="sec-title" data-i18n="proj.title">프로젝트</h2>
+    <div class="sec-line"></div>
+    <div class="pj-grid fade-up">
 
-      <!-- P1 -->
       <div class="pj-card" onclick="openModal(0)">
-        <div class="pj-header" style="background: var(--green-800);">
-          <div class="pj-grid-bg"></div>
-          <div class="pj-num">01</div>
+        <div class="pj-head" style="background: #3D5A3E;">
+          <div class="pj-head-bg"></div>
+          <div class="pj-num-bg">01</div>
           <span class="pj-badge">1st Project</span>
         </div>
         <div class="pj-body">
           <div class="pj-title">Car Pick — 차량 추천 서비스</div>
-          <p class="pj-desc">전국 자동차 등록 데이터를 분석해 사용자 맞춤 차량을 추천하는 데이터 대시보드</p>
+          <p class="pj-desc">전국 자동차 등록 데이터 분석 기반 맞춤 차량 추천 대시보드</p>
           <div class="pj-stack">
-            <span class="pj-tag">Python</span>
-            <span class="pj-tag">Streamlit</span>
-            <span class="pj-tag">Selenium</span>
-            <span class="pj-tag">MySQL</span>
-            <span class="pj-tag">Folium</span>
+            <span class="pj-tag">Python</span><span class="pj-tag">Streamlit</span><span class="pj-tag">Selenium</span><span class="pj-tag">MySQL</span><span class="pj-tag">Folium</span>
           </div>
         </div>
-        <div class="pj-footer">
-          <span class="pj-detail-btn">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <a href="https://github.com/bizseohyunkim/sk25-1st-4team" target="_blank" class="pj-github" onclick="event.stopPropagation()">GitHub ↗</a>
+        <div class="pj-foot">
+          <span class="pj-more">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <a href="https://github.com/bizseohyunkim/sk25-1st-4team" target="_blank" class="pj-gh" onclick="event.stopPropagation()">GitHub ↗</a>
         </div>
       </div>
 
-      <!-- P2 -->
       <div class="pj-card" onclick="openModal(1)">
-        <div class="pj-header" style="background: #0c3b28;">
-          <div class="pj-grid-bg"></div>
-          <div class="pj-num">02</div>
+        <div class="pj-head" style="background: #2C4A5A;">
+          <div class="pj-head-bg"></div>
+          <div class="pj-num-bg">02</div>
           <span class="pj-badge">2nd Project</span>
         </div>
         <div class="pj-body">
-          <div class="pj-title">SKN25 2nd — 프로젝트명 입력</div>
-          <p class="pj-desc">프로젝트 설명을 입력해주세요</p>
+          <div class="pj-title">OULAD Dropout Analytics</div>
+          <p class="pj-desc">학습 이탈 예측 및 군집 분석 ML 대시보드 (MLflow · Docker)</p>
           <div class="pj-stack">
-            <span class="pj-tag">Python</span>
-            <span class="pj-tag">기술스택 추가</span>
+            <span class="pj-tag">Python</span><span class="pj-tag">Streamlit</span><span class="pj-tag">MLflow</span><span class="pj-tag">XGBoost</span><span class="pj-tag">Docker</span><span class="pj-tag">MySQL</span>
           </div>
         </div>
-        <div class="pj-footer">
-          <span class="pj-detail-btn">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-2nd-3Team" target="_blank" class="pj-github" onclick="event.stopPropagation()">GitHub ↗</a>
+        <div class="pj-foot">
+          <span class="pj-more">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-2nd-3Team" target="_blank" class="pj-gh" onclick="event.stopPropagation()">GitHub ↗</a>
         </div>
       </div>
 
-      <!-- P3 -->
       <div class="pj-card" onclick="openModal(2)">
-        <div class="pj-header" style="background: #163d1e;">
-          <div class="pj-grid-bg"></div>
-          <div class="pj-num">03</div>
+        <div class="pj-head" style="background: #4A3D5C;">
+          <div class="pj-head-bg"></div>
+          <div class="pj-num-bg">03</div>
           <span class="pj-badge">3rd Project</span>
         </div>
         <div class="pj-body">
-          <div class="pj-title">SKN25 3rd — 프로젝트명 입력</div>
-          <p class="pj-desc">프로젝트 설명을 입력해주세요</p>
+          <div class="pj-title">PickCardU — MBTI 카드 추천 챗봇</div>
+          <p class="pj-desc">MBTI 말투로 신용카드를 추천해주는 RAG 기반 개인화 챗봇</p>
           <div class="pj-stack">
-            <span class="pj-tag">Python</span>
-            <span class="pj-tag">기술스택 추가</span>
+            <span class="pj-tag">Python</span><span class="pj-tag">LangChain</span><span class="pj-tag">ChromaDB</span><span class="pj-tag">OpenAI</span><span class="pj-tag">Streamlit</span><span class="pj-tag">Docker</span>
           </div>
         </div>
-        <div class="pj-footer">
-          <span class="pj-detail-btn">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-3rd-6Team" target="_blank" class="pj-github" onclick="event.stopPropagation()">GitHub ↗</a>
+        <div class="pj-foot">
+          <span class="pj-more">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-3rd-6Team" target="_blank" class="pj-gh" onclick="event.stopPropagation()">GitHub ↗</a>
         </div>
       </div>
 
-      <!-- P4 -->
       <div class="pj-card" onclick="openModal(3)">
-        <div class="pj-header" style="background: #1a3a10;">
-          <div class="pj-grid-bg"></div>
-          <div class="pj-num">04</div>
+        <div class="pj-head" style="background: #5C4A3E;">
+          <div class="pj-head-bg"></div>
+          <div class="pj-num-bg">04</div>
           <span class="pj-badge">4th Project</span>
         </div>
         <div class="pj-body">
-          <div class="pj-title">SKN25 4th — 프로젝트명 입력</div>
-          <p class="pj-desc">프로젝트 설명을 입력해주세요</p>
+          <div class="pj-title">RAIchU — 소비패턴 카드 추천 서비스</div>
+          <p class="pj-desc">React + Django 풀스택 · 하이브리드 RAG 기반 신용카드 큐레이션</p>
           <div class="pj-stack">
-            <span class="pj-tag">Python</span>
-            <span class="pj-tag">기술스택 추가</span>
+            <span class="pj-tag">React</span><span class="pj-tag">Django</span><span class="pj-tag">OpenAI</span><span class="pj-tag">NumPy</span><span class="pj-tag">Docker</span><span class="pj-tag">SQLite</span>
           </div>
         </div>
-        <div class="pj-footer">
-          <span class="pj-detail-btn">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-4th-6Team" target="_blank" class="pj-github" onclick="event.stopPropagation()">GitHub ↗</a>
+        <div class="pj-foot">
+          <span class="pj-more">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-4th-6Team" target="_blank" class="pj-gh" onclick="event.stopPropagation()">GitHub ↗</a>
         </div>
       </div>
 
-      <!-- P5 FINAL -->
-      <div class="pj-card" onclick="openModal(4)" style="border-color: var(--gold); border-width: 1.5px;">
-        <div class="pj-header" style="background: linear-gradient(135deg, var(--green-900), #2a1a00);">
-          <div class="pj-grid-bg"></div>
-          <div class="pj-num" style="opacity:0.25;">F</div>
-          <span class="pj-badge" style="border-color: var(--gold); background: rgba(201,168,76,0.2); color: var(--gold-light);">🏆 Final Project</span>
+      <div class="pj-card" onclick="openModal(4)" style="border-color: var(--terra); border-width: 1.5px;">
+        <div class="pj-head" style="background: linear-gradient(135deg, #2C3E2D, #3E2C1A);">
+          <div class="pj-head-bg"></div>
+          <div class="pj-num-bg" style="opacity:0.2;">F</div>
+          <span class="pj-badge" style="border-color: var(--terra-light); background: rgba(184,115,85,0.2); color: var(--terra-light);">🏆 Final Project</span>
         </div>
         <div class="pj-body">
-          <div class="pj-title">SKN25 Final — 프로젝트명 입력</div>
-          <p class="pj-desc">프로젝트 설명을 입력해주세요</p>
+          <div class="pj-title">PatentMind — AI 특허 작성 보조 Agent</div>
+          <p class="pj-desc">발명 아이디어를 입력하면 청구항·명세서·선행기술 초안을 자동 생성하는 AI Agent 파이프라인</p>
           <div class="pj-stack">
-            <span class="pj-tag">Python</span>
-            <span class="pj-tag">기술스택 추가</span>
+            <span class="pj-tag">Python</span><span class="pj-tag">AI Agent</span><span class="pj-tag">RAG</span><span class="pj-tag">LLM</span><span class="pj-tag">Docker</span>
           </div>
         </div>
-        <div class="pj-footer">
-          <span class="pj-detail-btn" style="color: var(--gold);">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-FINAL-3Team" target="_blank" class="pj-github" onclick="event.stopPropagation()">GitHub ↗</a>
+        <div class="pj-foot">
+          <span class="pj-more" style="color: var(--terra);">자세히 보기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          <a href="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-FINAL-3Team" target="_blank" class="pj-gh" onclick="event.stopPropagation()">GitHub ↗</a>
         </div>
       </div>
 
@@ -680,7 +608,7 @@
   </div>
 </section>
 
-<!-- MODALS -->
+<!-- PROJECT MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modalBox">
     <div class="modal-header">
@@ -690,18 +618,9 @@
       <button class="modal-close" onclick="closeModalBtn()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="modal-section">
-        <div class="modal-section-title">프로젝트 개요</div>
-        <p class="modal-text" id="mOverview"></p>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">주요 기능</div>
-        <ul class="modal-list" id="mFeatures"></ul>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">기술 스택 및 역할</div>
-        <ul class="modal-list" id="mRole"></ul>
-      </div>
+      <div class="modal-section"><div class="modal-stitle">프로젝트 개요</div><p class="modal-text" id="mOverview"></p></div>
+      <div class="modal-section"><div class="modal-stitle">주요 기능</div><ul class="modal-list" id="mFeatures"></ul></div>
+      <div class="modal-section"><div class="modal-stitle">기술 스택 및 역할</div><ul class="modal-list" id="mRole"></ul></div>
     </div>
     <div class="modal-footer">
       <a id="mGithub" href="#" target="_blank" class="modal-gh-btn">
@@ -712,100 +631,282 @@
   </div>
 </div>
 
-<!-- CONTACT -->
-<section id="contact">
+<!-- CARD NEWS -->
   <div class="section-inner">
-    <p class="section-label" data-i18n="contact.label">Contact</p>
-    <h2 class="section-title" data-i18n="contact.title">연락처</h2>
-    <div class="section-line"></div>
-    <div class="contact-grid fade-up">
-      <div class="contact-info">
-        <p data-i18n="contact.desc">금융권 취업 및 협업 관련 제안이나 문의는 아래 채널로 편하게 연락해 주세요.</p>
-        <div class="contact-links">
-          <a href="mailto:your@email.com" class="contact-link"><span class="contact-icon">✉</span>your@email.com</a>
-          <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank"><span class="contact-icon">in</span>linkedin.com/in/yourprofile</a>
-          <a href="https://github.com/yourgithub" class="contact-link" target="_blank"><span class="contact-icon">gh</span>github.com/yourgithub</a>
+    <p class="sec-label" data-i18n="cn.label">Finance Card News</p>
+    <h2 class="sec-title" data-i18n="cn.title">금융 카드뉴스</h2>
+    <div class="sec-line"></div>
+    <div class="cn-grid fade-up">
+
+      <div class="cn-card" onclick="openCN(0)">
+        <div class="cn-top" style="background: #3D5A3E;">
+          <div class="cn-top-num">01</div>
+          <div>
+            <div class="cn-cat" style="color: #A8C5A8;">금리 기초</div>
+            <div class="cn-title">금리란 무엇인가?</div>
+          </div>
+        </div>
+        <div class="cn-body">
+          <p class="cn-desc">돈의 가격, 금리. 우리 일상과 경제에 미치는 영향을 쉽게 풀어봅니다.</p>
+          <span class="cn-read">읽기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
         </div>
       </div>
-      <form class="contact-form" onsubmit="return false;">
-        <input type="text" data-i18n-placeholder="contact.name" placeholder="이름" />
-        <input type="email" data-i18n-placeholder="contact.email" placeholder="이메일" />
-        <textarea data-i18n-placeholder="contact.message" placeholder="메시지를 입력하세요"></textarea>
-        <button type="submit" class="btn-primary" style="align-self: flex-start;" data-i18n="contact.send">메시지 보내기</button>
-      </form>
+
+      <div class="cn-card" onclick="openCN(1)">
+        <div class="cn-top" style="background: #7A5C3E;">
+          <div class="cn-top-num">02</div>
+          <div>
+            <div class="cn-cat" style="color: #D4B896;">환율 이해</div>
+            <div class="cn-title">환율은 어떻게 결정될까?</div>
+          </div>
+        </div>
+        <div class="cn-body">
+          <p class="cn-desc">원/달러 환율이 오르면 무슨 일이 생길까? 수출·수입·여행까지 영향을 살펴봅니다.</p>
+          <span class="cn-read">읽기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+
+      <div class="cn-card" onclick="openCN(2)">
+        <div class="cn-top" style="background: #2C4A5A;">
+          <div class="cn-top-num">03</div>
+          <div>
+            <div class="cn-cat" style="color: #96C0D4;">투자 기초</div>
+            <div class="cn-title">주식 vs 채권, 무엇이 다를까?</div>
+          </div>
+        </div>
+        <div class="cn-body">
+          <p class="cn-desc">투자의 두 축, 주식과 채권의 차이점과 각각의 리스크·수익 구조를 비교합니다.</p>
+          <span class="cn-read">읽기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+
+      <div class="cn-card" onclick="openCN(3)">
+        <div class="cn-top" style="background: #4A3D5C;">
+          <div class="cn-top-num">04</div>
+          <div>
+            <div class="cn-cat" style="color: #C4B4D8;">거시경제</div>
+            <div class="cn-title">인플레이션과 중앙은행</div>
+          </div>
+        </div>
+        <div class="cn-body">
+          <p class="cn-desc">물가가 오르면 중앙은행은 어떻게 대응할까? 통화정책의 기본 원리를 알아봅니다.</p>
+          <span class="cn-read">읽기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+
+      <div class="cn-card" onclick="openCN(4)">
+        <div class="cn-top" style="background: #5A3D3D;">
+          <div class="cn-top-num">05</div>
+          <div>
+            <div class="cn-cat" style="color: #D4A8A8;">금융상품</div>
+            <div class="cn-title">ETF, 이것만 알면 된다</div>
+          </div>
+        </div>
+        <div class="cn-body">
+          <p class="cn-desc">인덱스 펀드와 주식의 장점을 합친 ETF. 구조·장단점·투자 방법을 정리합니다.</p>
+          <span class="cn-read">읽기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+
+      <div class="cn-card" onclick="openCN(5)">
+        <div class="cn-top" style="background: #3D5048;">
+          <div class="cn-top-num">06</div>
+          <div>
+            <div class="cn-cat" style="color: #A8C8B8;">은행 실무</div>
+            <div class="cn-title">은행은 어떻게 돈을 버는가?</div>
+          </div>
+        </div>
+        <div class="cn-body">
+          <p class="cn-desc">예금·대출 금리 차이(NIM)부터 수수료 수익까지, 은행의 수익 구조를 파헤칩니다.</p>
+          <span class="cn-read">읽기 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<footer>
-  <span data-i18n="footer.text">© 2025 김서현. Built with GitHub Pages.</span>
-</footer>
+<!-- CARD NEWS MODAL -->
+<div class="cn-modal-overlay" id="cnModalOverlay" onclick="closeCN(event)">
+  <div class="cn-modal" id="cnModalBox">
+    <div class="cn-modal-head">
+      <div class="cn-modal-cat" id="cnCat"></div>
+      <div class="cn-modal-title" id="cnTitle"></div>
+      <button class="cn-modal-close" onclick="closeCNBtn()">✕</button>
+    </div>
+    <div class="cn-modal-body">
+      <div class="cn-modal-section">
+        <div class="cn-modal-stitle">개요</div>
+        <p class="cn-modal-text" id="cnOverview"></p>
+      </div>
+      <div class="cn-modal-section">
+        <div class="cn-modal-stitle">핵심 내용</div>
+        <ul class="cn-modal-list" id="cnPoints"></ul>
+      </div>
+      <div class="cn-modal-section">
+        <div class="cn-modal-stitle">실생활 연결</div>
+        <p class="cn-modal-text" id="cnReal"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="sec-label" data-i18n="contact.label">Contact</p>
+    <h2 class="sec-title" data-i18n="contact.title">연락처</h2>
+    <div class="sec-line"></div>
+    <div class="fade-up">
+      <div class="contact-links">
+        <a href="mailto:biz.seohyunkim@gmail.com" class="contact-link"><span class="contact-icon">✉</span>biz.seohyunkim@gmail.com</a>
+        <a href="https://www.linkedin.com/in/seohyun-kim-1893ba360/" class="contact-link" target="_blank"><span class="contact-icon">in</span>linkedin.com/in/seohyun-kim</a>
+        <a href="https://github.com/bizseohyunkim" class="contact-link" target="_blank"><span class="contact-icon">gh</span>github.com/bizseohyunkim</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 김서현. Built with GitHub Pages.</footer>
 
 <script>
-// ── 프로젝트 모달 데이터 ──
+// ── 카드뉴스 데이터 ──
+const cnData = [
+  {
+    cat: "금리 기초",
+    title: "금리란 무엇인가?",
+    overview: "금리는 돈을 빌리거나 빌려줄 때 발생하는 이자의 비율로, 경제 전반에 걸쳐 가장 중요한 변수 중 하나입니다. 중앙은행이 설정하는 기준금리를 기반으로 시중 금리가 결정되며, 이는 대출·예금·투자·소비 모두에 영향을 미칩니다.",
+    points: [
+      "기준금리: 중앙은행(한국은행)이 결정하는 정책금리로 모든 금리의 기준이 됨",
+      "금리 인상 → 대출비용 증가 → 소비·투자 위축 → 물가 하락 효과",
+      "금리 인하 → 대출비용 감소 → 소비·투자 증가 → 경기 부양 효과",
+      "명목금리 vs 실질금리: 실질금리 = 명목금리 − 인플레이션율",
+      "단기금리와 장기금리: 수익률 곡선(Yield Curve)으로 경기 전망을 파악"
+    ],
+    real: "주택담보대출 금리가 1% 오르면 1억 원 대출 시 연간 이자 부담이 약 100만 원 증가합니다. 금리 변화는 부동산 시장, 주식 시장, 환율 모두에 연쇄 반응을 일으킵니다."
+  },
+  {
+    cat: "환율 이해",
+    title: "환율은 어떻게 결정될까?",
+    overview: "환율은 두 나라 통화의 교환 비율입니다. 원/달러 환율이 1,400원이라면 1달러를 사기 위해 1,400원이 필요하다는 뜻입니다. 환율은 외환시장에서 수요와 공급에 의해 결정되지만, 금리 차이·무역수지·국제 정세 등 다양한 요인이 복합적으로 작용합니다.",
+    points: [
+      "환율 상승(원화 약세): 수출 기업에 유리, 수입 물가 상승, 해외여행 비용 증가",
+      "환율 하락(원화 강세): 수입 물가 하락, 수출 기업 수익성 악화",
+      "금리 차이: 한국 금리 > 미국 금리 → 달러 유입 → 원화 강세",
+      "무역수지 흑자 → 달러 공급 증가 → 원화 강세 압력",
+      "안전자산 선호 심리(위기 시) → 달러 수요 급증 → 원화 약세"
+    ],
+    real: "해외직구 시 환율이 높으면 같은 달러 가격의 물건도 더 비싸집니다. 반대로 환율이 낮을 때 해외여행·유학 비용이 줄어들죠. 기업들은 환율 리스크를 헤지(hedge)하기 위해 선물환 계약을 활용합니다."
+  },
+  {
+    cat: "투자 기초",
+    title: "주식 vs 채권, 무엇이 다를까?",
+    overview: "주식은 기업의 소유권 일부를 의미하며, 채권은 발행 주체에게 돈을 빌려주고 이자를 받는 확정수익 상품입니다. 두 자산은 리스크와 수익의 특성이 달라 포트폴리오 구성 시 핵심적인 역할을 합니다.",
+    points: [
+      "주식: 높은 수익 가능성, 원금 손실 위험, 시장 변동성에 민감",
+      "채권: 정해진 이자(쿠폰) 지급, 만기 시 원금 상환, 주식보다 안정적",
+      "금리와 채권가격은 반비례: 금리 상승 → 기존 채권 가격 하락",
+      "신용등급: 발행 주체의 상환 능력 평가 (AAA가 가장 안전)",
+      "주식-채권 음의 상관관계: 경기 불황 시 채권 가격 상승, 주식 하락"
+    ],
+    real: "60:40 포트폴리오(주식 60% + 채권 40%)는 장기 투자의 대표적 전략입니다. 젊을수록 주식 비중을 높이고, 은퇴에 가까울수록 채권 비중을 늘리는 것이 일반적입니다."
+  },
+  {
+    cat: "거시경제",
+    title: "인플레이션과 중앙은행",
+    overview: "인플레이션은 물가 수준이 지속적으로 상승하는 현상입니다. 적절한 인플레이션(연 2% 내외)은 경제 성장의 신호이지만, 과도한 인플레이션은 실질 구매력을 떨어뜨립니다. 중앙은행은 금리 조정을 통해 물가를 안정시키는 역할을 합니다.",
+    points: [
+      "수요 견인 인플레이션: 경기 호황으로 수요가 공급을 초과할 때 발생",
+      "비용 압박 인플레이션: 원자재·임금 상승으로 생산비가 올라 가격 전가",
+      "한국은행 목표: 소비자물가 상승률 2% 내외 유지",
+      "양적긴축(QT): 중앙은행이 보유 채권을 매각해 시중 유동성을 흡수",
+      "스태그플레이션: 인플레이션 + 경기침체 동시 발생, 정책 대응이 가장 어려운 상황"
+    ],
+    real: "2022~2023년 글로벌 인플레이션 급등 이후 미 연준(Fed)은 급격한 금리 인상을 단행했습니다. 이는 전 세계 자산 시장과 환율에 큰 영향을 미쳤으며, 한국은행도 함께 금리를 올렸습니다."
+  },
+  {
+    cat: "금융상품",
+    title: "ETF, 이것만 알면 된다",
+    overview: "ETF(Exchange-Traded Fund, 상장지수펀드)는 주식처럼 거래소에서 사고팔 수 있는 펀드입니다. 특정 지수(코스피200, S&P500 등)를 추종하거나 특정 섹터·테마에 투자하며, 낮은 비용과 높은 분산효과로 인기를 끌고 있습니다.",
+    points: [
+      "지수 추종: S&P500 ETF는 미국 상위 500개 기업에 한 번에 투자하는 효과",
+      "낮은 보수: 일반 펀드 대비 운용보수가 0.01~0.5% 수준으로 저렴",
+      "실시간 거래: 주식처럼 장중 매수·매도 가능 (일반 펀드는 하루 1회)",
+      "배당 ETF, 채권 ETF, 원자재 ETF, 레버리지 ETF 등 다양한 종류 존재",
+      "TIGER, KODEX(국내), SPY, QQQ(미국) 등이 대표적인 ETF"
+    ],
+    real: "매달 일정 금액씩 S&P500 ETF에 적립식 투자(달러코스트평균법)하는 방식은 미국에서 가장 보편적인 개인 노후 준비 전략입니다. 워런 버핏도 유언장에 자산의 90%를 S&P500 인덱스 펀드에 투자하라고 적었습니다."
+  },
+  {
+    cat: "은행 실무",
+    title: "은행은 어떻게 돈을 버는가?",
+    overview: "은행의 핵심 수익 모델은 예금금리와 대출금리의 차이인 '예대마진(NIM, Net Interest Margin)'입니다. 고객의 예금을 받아 더 높은 금리로 대출을 해주고, 그 차익으로 수익을 창출합니다. 여기에 다양한 수수료 수익이 더해집니다.",
+    points: [
+      "NIM(순이자마진): 대출금리 - 예금금리, 은행 수익성의 핵심 지표",
+      "비이자수익: 송금·환전 수수료, 펀드 판매 수수료, 방카슈랑스 등",
+      "BIS 자기자본비율: 8% 이상 유지 의무, 건전성 지표",
+      "고정금리 vs 변동금리: 금리 변동기에 은행의 리스크 관리 전략이 달라짐",
+      "가계대출, 기업대출, 무역금융, PF(프로젝트파이낸싱) 등 다양한 여신 상품"
+    ],
+    real: "금리 인상기에는 대출금리가 예금금리보다 빠르게 오르는 경향이 있어 은행의 NIM이 확대됩니다. 반대로 금리 인하기에는 NIM이 축소되어 수익성이 떨어집니다. 이를 이해하면 은행 주식 투자 타이밍도 분석할 수 있습니다."
+  }
+];
+
+function openCN(idx) {
+  const d = cnData[idx];
+  document.getElementById('cnCat').textContent = d.cat;
+  document.getElementById('cnTitle').textContent = d.title;
+  document.getElementById('cnOverview').textContent = d.overview;
+  document.getElementById('cnPoints').innerHTML = d.points.map(p => `<li>${p}</li>`).join('');
+  document.getElementById('cnReal').textContent = d.real;
+  document.getElementById('cnModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCNBtn() { document.getElementById('cnModalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeCN(e) { if (e.target === document.getElementById('cnModalOverlay')) closeCNBtn(); }
+
+// ── 프로젝트 데이터 ──
 const projects = [
   {
-    num: "PROJECT 01",
-    title: "Car Pick — 차량 추천 서비스",
-    tags: ["Python", "Streamlit", "Selenium", "MySQL", "pandas", "Folium", "DBeaver"],
+    num: "PROJECT 01", title: "Car Pick — 차량 추천 서비스",
+    tags: ["Python","Streamlit","Selenium","MySQL","pandas","Folium","DBeaver"],
     overview: "전국 자동차 등록 데이터를 정밀 분석하여 사용자에게 최적화된 차량 정보를 제공하는 Streamlit 기반 대시보드 서비스입니다. 성별·연령·지역별 실제 점유율 데이터를 기반으로 맞춤형 차량 추천을 제공하며, 현대·기아·제네시스 FAQ 및 대리점 지도 정보를 통합하였습니다.",
-    features: [
-      "시간 흐름별 추이 — 시도·차종·용도별 등록 대수 그래프 시각화",
-      "지역별 추이 — Folium 지도 기반 연도별·차종별 등록 현황",
-      "성별·연령별 추이 — 막대그래프 및 버블 차트로 남녀 비율 비교",
-      "필터식 맞춤 추천 — 성별·연령·선호 차종 기반 최적 차량 리스트 제공",
-      "통합 FAQ — 현대·기아·제네시스 주요 Q&A 통합 검색",
-      "지점 정보 — 제조사별 전시장·대리점 위치 지도 표시",
-      "Folium 로딩 최적화 — 캐싱 적용으로 로딩 속도 60% 단축 (11s → 5s)"
-    ],
-    role: [
-      "Streamlit 메인 앱 구현 및 코드 통합, GitHub 총괄 관리",
-      "제네시스 FAQ & 현대 Agency 크롤링 (Selenium)",
-      "전체 차량 등록 데이터 전처리 및 Pickle(.pkl) 포맷 최적화",
-      "MySQL ERD 설계 및 지역·행정구역 명칭 표준화"
-    ],
-    period: "2026.01.15 – 2026.01.19",
-    github: "https://github.com/bizseohyunkim/sk25-1st-4team"
+    features: ["시간 흐름별 추이 — 시도·차종·용도별 등록 대수 그래프 시각화","지역별 추이 — Folium 지도 기반 연도별·차종별 등록 현황","성별·연령별 추이 — 막대그래프 및 버블 차트로 남녀 비율 비교","필터식 맞춤 추천 — 성별·연령·선호 차종 기반 최적 차량 리스트 제공","통합 FAQ — 현대·기아·제네시스 주요 Q&A 통합 검색","Folium 로딩 최적화 — 캐싱 적용으로 속도 60% 단축 (11s → 5s)"],
+    role: ["군·구 Crawling & Folium 지도 시각화 구현","차량 추천 알고리즘 로직 설계 및 구현","발표 전략 수립 및 스크립트 작성"],
+    period: "2026.01.15 – 2026.01.19", github: "https://github.com/bizseohyunkim/sk25-1st-4team"
   },
   {
-    num: "PROJECT 02",
-    title: "SKN25 2nd — 프로젝트명을 입력해주세요",
-    tags: ["Python", "기술스택 추가"],
-    overview: "GitHub README를 참고하여 프로젝트 개요를 작성해주세요.",
-    features: ["주요 기능 1", "주요 기능 2", "주요 기능 3"],
-    role: ["본인 역할 및 기여 내용을 작성해주세요"],
-    period: "기간 입력",
-    github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-2nd-3Team"
+    num: "PROJECT 02", title: "OULAD Dropout Analytics",
+    tags: ["Python","Streamlit","MLflow","XGBoost","CatBoost","PyTorch","MySQL","Docker"],
+    overview: "Open University Learning Analytics Dataset(OULAD)을 기반으로 학습자의 이탈(Dropout)을 예측하고 군집 분석을 통해 학습자 유형을 분류하는 인터랙티브 대시보드 프로젝트입니다. Logistic Regression, Random Forest, XGBoost, CatBoost, TabNet 등 다양한 모델을 비교하고 MLflow로 실험을 관리합니다.",
+    features: ["이탈 예측 — 4개 ML 모델 실시간 추론 및 성능 비교 대시보드","군집 분석 — KMeans 기반 학습자 유형 분류 및 군집 프로파일 해석","MLflow — 실험 추적 및 모델 레지스트리 관리","MySQL 연동 — 예측 결과 실시간 저장 및 조회","Docker 기반 멀티 서비스 환경 (Streamlit · MLflow · Jupyter · MySQL)"],
+    role: ["군집 분석(KMeans) 모델 구현 및 시각화","임베딩 & 벡터DB 저장 파이프라인 구축","PPT 제작"],
+    period: "2026.01 – 2026.02", github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-2nd-3Team"
   },
   {
-    num: "PROJECT 03",
-    title: "SKN25 3rd — 프로젝트명을 입력해주세요",
-    tags: ["Python", "기술스택 추가"],
-    overview: "GitHub README를 참고하여 프로젝트 개요를 작성해주세요.",
-    features: ["주요 기능 1", "주요 기능 2", "주요 기능 3"],
-    role: ["본인 역할 및 기여 내용을 작성해주세요"],
-    period: "기간 입력",
-    github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-3rd-6Team"
+    num: "PROJECT 03", title: "PickCardU — MBTI 카드 추천 챗봇",
+    tags: ["Python","LangChain","ChromaDB","OpenAI","Streamlit","Docker","SQLite","EasyOCR"],
+    overview: "신용카드 시장의 복잡한 혜택 구조를 해소하기 위해 RAG(Retrieval-Augmented Generation) 기술로 카드 약관을 정확히 검색하고, 사용자의 MBTI 유형에 맞는 말투로 카드를 추천·설명해주는 개인 맞춤형 챗봇입니다. 10개 카드사의 PDF 약관을 OpenAI 임베딩으로 벡터화하여 ChromaDB에 저장합니다.",
+    features: ["카드 추천 — 사용자 질문 + 보유 카드 기반 맞춤 추천","MBTI 말투 — 16가지 MBTI 페르소나로 개인화된 답변 제공","카드 Q&A — 카드 약관 기반 정확한 혜택 질의응답 (RAG)","대화 이력 — 사용자별 채팅 히스토리 SQLite 저장","OCR 파이프라인 — EasyOCR + GPT Vision으로 PDF 텍스트 추출"],
+    role: ["삼성·하나 카드 데이터 수집 및 전처리","MBTI INTP 프롬프트 설계","임베딩 & ChromaDB 벡터DB 저장 파이프라인 구축","PPT 제작"],
+    period: "2026.04.01 – 2026.04.07", github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-3rd-6Team"
   },
   {
-    num: "PROJECT 04",
-    title: "SKN25 4th — 프로젝트명을 입력해주세요",
-    tags: ["Python", "기술스택 추가"],
-    overview: "GitHub README를 참고하여 프로젝트 개요를 작성해주세요.",
-    features: ["주요 기능 1", "주요 기능 2", "주요 기능 3"],
-    role: ["본인 역할 및 기여 내용을 작성해주세요"],
-    period: "기간 입력",
-    github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-4th-6Team"
+    num: "PROJECT 04", title: "RAIchU — 소비패턴 카드 추천 서비스",
+    tags: ["React","Vite","TailwindCSS","Django","OpenAI","NumPy","SQLite","Docker"],
+    overview: "3차 프로젝트(PickCardU)를 고도화한 신용카드 추천 서비스입니다. GPT Vision OCR로 카드 약관을 구조화 JSON으로 변환하고, 하이브리드 검색(벡터 60% + 키워드 40%, RRF)으로 사용자의 소비패턴과 라이프스타일에 맞춘 맞춤형 상담을 제공합니다. Streamlit에서 React + Django 풀스택으로 전환하였습니다.",
+    features: ["온보딩 — 나이대·라이프스타일·월 사용액·연회비·선호 혜택 설정","하이브리드 RAG — 벡터(60%) + 키워드(40%) + RRF 융합 검색","GPT Vision OCR — PDF → 구조화 JSON 변환 파이프라인","보유 카드 우선 응답 — 보유 카드 관련 질문 시 해당 카드 데이터 우선 제공","React 프론트엔드 — 스플래시·온보딩·채팅·마이페이지 구현"],
+    role: ["프론트엔드 전담 — 스플래시·온보딩·챗봇·마이페이지 화면 구현","React 19 + Vite + Tailwind CSS UI 스타일링","Zustand 전역 상태 관리 및 백엔드 API 연동","PPT 제작"],
+    period: "2026.04.14 – 2026.04.28", github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-4th-6Team"
   },
   {
-    num: "🏆 FINAL PROJECT",
-    title: "SKN25 Final — 프로젝트명을 입력해주세요",
-    tags: ["Python", "기술스택 추가"],
-    overview: "GitHub README를 참고하여 프로젝트 개요를 작성해주세요.",
-    features: ["주요 기능 1", "주요 기능 2", "주요 기능 3"],
-    role: ["본인 역할 및 기여 내용을 작성해주세요"],
-    period: "기간 입력",
-    github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-FINAL-3Team"
+    num: "🏆 FINAL PROJECT", title: "PatentMind — AI 특허 작성 보조 Agent",
+    tags: ["Python","AI Agent","RAG","LLM","FastAPI","React","Docker","AWS S3"],
+    overview: "개인 발명가의 아이디어를 입력받아 변리사가 검토 가능한 특허 초안과 선행기술 검토 결과를 생성하는 AI Agent 기반 특허 작성 보조 시스템입니다. 특허 문서는 청구항·도면·명세서·선행기술 검토가 서로 연결되어야 하며, 비전문가가 직접 작성하기 어려운 특허 초안 작성의 진입 장벽을 낮추는 것을 목표로 합니다.",
+    features: ["발명 아이디어 상담 및 요약 — 자연어 대화로 발명 내용 구조화","선행기술조사 — 유사 특허 검색 및 신규성 검토 보조","청구항 초안 생성 — AI가 특허 청구항 자동 작성","명세서 초안 생성 — 발명의 상세 설명 자동 작성","심사관 관점 검토 — 거절 가능성 사전 검토 보조","AWS S3 기반 IPC별 특허 PDF/XML 데이터 관리"],
+    role: ["역할 내용을 입력해주세요"],
+    period: "2026.05 – 진행 중", github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN25-FINAL-3Team"
   }
 ];
 
@@ -821,238 +922,68 @@ function openModal(idx) {
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeModalBtn() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function closeModal(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModalBtn();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
+function closeModalBtn() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalBtn(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModalBtn(); closeCNBtn(); } });
 
-
+// ── i18n ──
 const i18n = {
   ko: {
-    "nav.about": "소개", "nav.skills": "역량", "nav.experience": "경력",
-    "nav.projects": "프로젝트", "nav.contact": "연락처",
-    "hero.badge": "Finance & Banking Portfolio",
-    "hero.name": "안녕하세요,<br>저는 <span>김서현</span>입니다",
-    "hero.sub": "은행 · 증권 · 금융 서비스 지망생",
-    "hero.desc": "금융 산업에 대한 깊은 이해와 열정을 바탕으로<br>데이터와 분석으로 가치를 만들어가고 싶습니다.",
-    "hero.cta1": "프로젝트 보기", "hero.cta2": "연락하기",
-    "about.label": "About Me", "about.title": "자기소개",
-    "about.p1": "금융 및 경제학을 전공하며 은행과 증권 분야에 깊은 관심을 키워온 취업 준비생입니다. 금융 데이터 분석과 리스크 관리에 특히 흥미를 느끼며, 관련 프로젝트와 인턴십 경험을 쌓아왔습니다.",
-    "about.p2": "숫자와 데이터 뒤에 숨겨진 시장의 흐름을 읽고, 이를 실제 의사결정에 연결하는 일에서 보람을 느낍니다. 팀워크와 소통 능력을 바탕으로 금융 현장에 빠르게 기여하고자 합니다.",
-    "about.p3": "✦ 희망 직무: 은행 · 증권 분야 (직무 탐색 중)<br>✦ 관심 분야: 리테일 뱅킹, 자산관리, 리서치, 리스크관리",
-    "about.stat1": "금융 관련 프로젝트", "about.stat2": "금융 관련 자격증", "about.stat3": "경제/경영학부 재학",
-    "skills.label": "Skills & Qualifications", "skills.title": "보유 역량",
-    "skills.cat1": "금융 지식", "skills.cat2": "분석 도구", "skills.cat3": "자격증 · 역량",
-    "skills.s1_1": "재무제표 분석", "skills.s1_2": "주식 · 채권 기초", "skills.s1_3": "리스크 관리 개념", "skills.s1_4": "파생상품 기초", "skills.s1_5": "거시경제 분석",
-    "skills.s2_1": "Excel / 재무 모델링", "skills.s2_2": "Python (pandas, numpy)", "skills.s2_3": "SQL 기초", "skills.s2_4": "Bloomberg 기초", "skills.s2_5": "PowerPoint / 보고서 작성",
-    "skills.s3_1": "투자자산운용사 (취득)", "skills.s3_2": "한국사능력검정 1급", "skills.s3_3": "TOEIC 000점", "skills.s3_4": "커뮤니케이션 · 발표", "skills.s3_5": "팀 프로젝트 경험",
-    "exp.label": "Experience & Education", "exp.title": "경력 및 학력",
-    "exp.t1_title": "○○은행 인턴십", "exp.t1_org": "리테일금융본부 · 서울",
-    "exp.t1_desc": "고객 포트폴리오 분석 보조 업무 수행. 예금/대출 상품 데이터 정리 및 시각화 보고서 작성. 고객 응대 프로세스 이해.",
-    "exp.t2_period": "2023.09 — 현재", "exp.t2_title": "금융경제학회 부원", "exp.t2_org": "○○대학교 경제학과 학술동아리",
-    "exp.t2_desc": "주간 시황 분석 발표 및 모의 포트폴리오 운용. 학회지 논문 1편 기고.",
-    "exp.t3_period": "2021.03 — 현재", "exp.t3_title": "경제학부 재학",
-    "exp.t3_desc": "금융경제학 전공. 주요 이수 과목: 금융시장론, 투자론, 파생상품론, 계량경제학, 기업재무론.",
-    "proj.label": "Projects", "proj.title": "프로젝트",
-    "proj.p1_tag": "재무 분석", "proj.p1_name": "국내 은행 수익성 분석",
-    "proj.p1_desc": "4대 시중은행의 2020–2023 재무제표를 분석하여 NIM, ROE 변화 추이를 Excel로 모델링하고, 금리 인상기 수익성 변화를 시각화한 보고서 작성.",
-    "proj.p2_tag": "리스크 분석", "proj.p2_name": "모의 포트폴리오 운용",
-    "proj.p2_desc": "학회 활동으로 1,000만원 가상 자산 배분 후 6개월간 운용. VaR 개념 적용, 주간 리밸런싱 전략 수립 및 성과 분석 발표.",
-    "proj.p3_tag": "데이터 분석", "proj.p3_name": "가계부채와 소비 상관관계 연구",
-    "proj.p3_desc": "한국은행 ECOS 데이터를 Python으로 수집·분석. 가계부채 증가가 소비지출에 미치는 영향을 회귀분석으로 실증. 학과 발표 최우수상 수상.",
-    "proj.p4_tag": "리서치", "proj.p4_name": "ESG 금융상품 트렌드 분석",
-    "proj.p4_desc": "국내외 ESG 채권·펀드 시장 동향 조사 및 주요 금융사 ESG 전략 비교. 20페이지 분량의 리서치 리포트 작성 및 팀 발표 진행.",
-    "contact.label": "Contact", "contact.title": "연락처",
-    "contact.desc": "금융권 취업 및 협업 관련 제안이나 문의는 아래 채널로 편하게 연락해 주세요.",
-    "contact.name": "이름", "contact.email": "이메일", "contact.message": "메시지를 입력하세요", "contact.send": "메시지 보내기",
-    "footer.text": "© 2025 김서현. Built with GitHub Pages.",
-    "__lang_label": "한국어"
+    "nav.about":"소개","nav.skills":"역량","nav.journey":"학습여정","nav.cardnews":"카드뉴스","nav.projects":"프로젝트","nav.contact":"연락처",
+    "hero.name":"김서현 <span>포트폴리오</span>","hero.cta1":"프로젝트 보기","hero.cta2":"연락하기",
+    "about.label":"About Me","about.title":"자기소개","about.p1":"자기소개를 입력해주세요.",
+    "skills.label":"Skills","skills.title":"보유 역량","skills.cat1":"금융 지식","skills.cat2":"분석 도구",
+    "skills.s1_1":"재무제표 분석","skills.s1_2":"주식 · 채권 기초","skills.s1_3":"리스크 관리 개념","skills.s1_4":"파생상품 기초","skills.s1_5":"거시경제 분석",
+    "skills.s2_1":"Excel / 재무 모델링","skills.s2_2":"Python (pandas, numpy)","skills.s2_3":"SQL 기초","skills.s2_4":"Bloomberg 기초","skills.s2_5":"PowerPoint / 보고서 작성",
+    "journey.label":"Education","journey.title":"학습 여정","journey.camp":"SK Networks AI Camp 25기 · 2025.12 – 2026.06",
+    "journey.p1_period":"2025.12\n~ 2026.01","journey.p1_title":"Python & 데이터 수집","journey.p1_desc":"Python 환경 구축부터 시작해 기본 문법, 자료구조, 함수/클래스를 익히고 웹 크롤링과 API 연동을 통해 실제 데이터를 수집하는 파이프라인을 구현했습니다.",
+    "journey.p2_period":"2026.01\n~ 2026.02","journey.p2_title":"데이터 분석 & 시각화","journey.p2_desc":"대용량 데이터를 정제·가공하고 통계 분석 및 시각화를 통해 인사이트를 도출했습니다. SQL로 데이터베이스를 설계하고 Docker 기반 환경을 구성했습니다.",
+    "journey.p3_period":"2026.02\n~ 2026.03","journey.p3_title":"머신러닝 & 딥러닝","journey.p3_desc":"지도학습·비지도학습 알고리즘을 구현하고, PyTorch로 CNN 기반 이미지 분류 모델을 직접 설계·학습했습니다. MLflow로 실험을 추적하고 모델 성능을 최적화했습니다.",
+    "journey.p4_period":"2026.03\n~ 2026.04","journey.p4_title":"LLM & RAG & AI Agent","journey.p4_desc":"LangChain으로 RAG 파이프라인을 구축하고, 벡터 DB에 문서를 임베딩하여 검색 기반 AI 서비스를 개발했습니다. Agent를 설계해 멀티스텝 워크플로를 자동화했습니다.",
+    "journey.p5_period":"2026.04\n~ 2026.06","journey.p5_title":"풀스택 웹 개발 & 배포","journey.p5_desc":"Django REST API와 React 프론트엔드를 연동한 풀스택 서비스를 구현하고, Docker Compose로 컨테이너 환경을 구성했습니다. WebSocket 기반 실시간 통신도 구현했습니다.",
+    "proj.label":"Projects","proj.title":"프로젝트",
+    "contact.label":"Contact","contact.title":"연락처","contact.name":"이름","contact.email":"이메일","contact.message":"메시지를 입력하세요","contact.send":"메시지 보내기",
+    "__lang":"한국어"
   },
   en: {
-    "nav.about": "About", "nav.skills": "Skills", "nav.experience": "Career",
-    "nav.projects": "Projects", "nav.contact": "Contact",
-    "hero.badge": "Finance & Banking Portfolio",
-    "hero.name": "Hello,<br>I'm <span>Seohyun Kim</span>",
-    "hero.sub": "Aspiring Banking · Securities · Financial Services Professional",
-    "hero.desc": "Passionate about the financial industry,<br>I aim to create value through data and analysis.",
-    "hero.cta1": "View Projects", "hero.cta2": "Contact Me",
-    "about.label": "About Me", "about.title": "About Me",
-    "about.p1": "I am a job-seeker who has developed a deep interest in banking and securities while majoring in finance and economics. I am particularly fascinated by financial data analysis and risk management, and have been building relevant project and internship experience.",
-    "about.p2": "I find fulfillment in reading the market trends hidden behind numbers and data, and connecting them to real decision-making. I aim to contribute quickly to the financial industry, backed by strong teamwork and communication skills.",
-    "about.p3": "✦ Target role: Banking · Securities (exploring options)<br>✦ Areas of interest: Retail banking, Wealth management, Research, Risk management",
-    "about.stat1": "Finance Projects", "about.stat2": "Certifications", "about.stat3": "Economics / Business",
-    "skills.label": "Skills & Qualifications", "skills.title": "Core Skills",
-    "skills.cat1": "Finance Knowledge", "skills.cat2": "Analytical Tools", "skills.cat3": "Certifications",
-    "skills.s1_1": "Financial Statement Analysis", "skills.s1_2": "Stocks & Bonds Fundamentals", "skills.s1_3": "Risk Management Concepts", "skills.s1_4": "Derivatives Basics", "skills.s1_5": "Macroeconomic Analysis",
-    "skills.s2_1": "Excel / Financial Modeling", "skills.s2_2": "Python (pandas, numpy)", "skills.s2_3": "SQL Basics", "skills.s2_4": "Bloomberg Basics", "skills.s2_5": "PowerPoint / Reporting",
-    "skills.s3_1": "Investment Asset Manager (certified)", "skills.s3_2": "Korean History Certification Lv.1", "skills.s3_3": "TOEIC 000", "skills.s3_4": "Communication & Presentation", "skills.s3_5": "Team Project Experience",
-    "exp.label": "Experience & Education", "exp.title": "Experience & Education",
-    "exp.t1_title": "○○ Bank Internship", "exp.t1_org": "Retail Banking HQ · Seoul",
-    "exp.t1_desc": "Assisted in customer portfolio analysis. Compiled and visualized deposit/loan product data. Gained understanding of customer service processes.",
-    "exp.t2_period": "Sep 2023 — Present", "exp.t2_title": "Finance & Economics Society Member", "exp.t2_org": "○○ University, Dept. of Economics",
-    "exp.t2_desc": "Presented weekly market analysis and managed a mock portfolio. Contributed one paper to the society journal.",
-    "exp.t3_period": "Mar 2021 — Present", "exp.t3_title": "B.S. in Economics (Current)",
-    "exp.t3_desc": "Major: Financial Economics. Key courses: Financial Markets, Investment Theory, Derivatives, Econometrics, Corporate Finance.",
-    "proj.label": "Projects", "proj.title": "Projects",
-    "proj.p1_tag": "Financial Analysis", "proj.p1_name": "Korean Bank Profitability Analysis",
-    "proj.p1_desc": "Analyzed 2020–2023 financial statements of the top 4 Korean banks. Built Excel models tracking NIM and ROE trends during rate hikes.",
-    "proj.p2_tag": "Risk Analysis", "proj.p2_name": "Mock Portfolio Management",
-    "proj.p2_desc": "Allocated and managed a ₩10M virtual portfolio over 6 months. Applied VaR concepts and developed a weekly rebalancing strategy.",
-    "proj.p3_tag": "Data Analysis", "proj.p3_name": "Household Debt & Consumption Study",
-    "proj.p3_desc": "Collected and analyzed Bank of Korea ECOS data using Python. Empirically examined the impact of household debt on consumption via regression analysis. Won Best Presentation Award.",
-    "proj.p4_tag": "Research", "proj.p4_name": "ESG Financial Product Trend Analysis",
-    "proj.p4_desc": "Investigated domestic and global ESG bond and fund market trends. Compared ESG strategies of major financial institutions. Produced a 20-page research report.",
-    "contact.label": "Contact", "contact.title": "Contact",
-    "contact.desc": "Feel free to reach out for job opportunities, collaborations, or any inquiries via the channels below.",
-    "contact.name": "Name", "contact.email": "Email", "contact.message": "Your message...", "contact.send": "Send Message",
-    "footer.text": "© 2025 Seohyun Kim. Built with GitHub Pages.",
-    "__lang_label": "English"
-  },
-  zh: {
-    "nav.about": "关于", "nav.skills": "技能", "nav.experience": "经历",
-    "nav.projects": "项目", "nav.contact": "联系",
-    "hero.badge": "金融 & 银行 作品集",
-    "hero.name": "您好，<br>我是<span>金书贤</span>",
-    "hero.sub": "银行 · 证券 · 金融服务 求职者",
-    "hero.desc": "凭借对金融行业的深刻理解与热情，<br>希望通过数据与分析创造价值。",
-    "hero.cta1": "查看项目", "hero.cta2": "联系我",
-    "about.label": "关于我", "about.title": "自我介绍",
-    "about.p1": "我是一名主修金融经济学的求职者，对银行和证券领域有浓厚兴趣。尤其对金融数据分析和风险管理着迷，并积累了相关项目和实习经验。",
-    "about.p2": "我喜欢从数字和数据背后解读市场动向，并将其与实际决策相结合。凭借扎实的团队合作和沟通能力，希望能迅速为金融行业贡献力量。",
-    "about.p3": "✦ 目标职位：银行 · 证券（探索中）<br>✦ 兴趣领域：零售银行、财富管理、研究、风险管理",
-    "about.stat1": "金融相关项目", "about.stat2": "金融相关证书", "about.stat3": "经济/经营学部在读",
-    "skills.label": "技能 & 资质", "skills.title": "核心技能",
-    "skills.cat1": "金融知识", "skills.cat2": "分析工具", "skills.cat3": "证书 · 能力",
-    "skills.s1_1": "财务报表分析", "skills.s1_2": "股票 · 债券基础", "skills.s1_3": "风险管理概念", "skills.s1_4": "衍生品基础", "skills.s1_5": "宏观经济分析",
-    "skills.s2_1": "Excel / 财务建模", "skills.s2_2": "Python (pandas, numpy)", "skills.s2_3": "SQL基础", "skills.s2_4": "Bloomberg基础", "skills.s2_5": "PowerPoint / 报告撰写",
-    "skills.s3_1": "投资资产管理师（已取得）", "skills.s3_2": "韩国史能力检定1级", "skills.s3_3": "TOEIC 000分", "skills.s3_4": "沟通 · 演讲", "skills.s3_5": "团队项目经验",
-    "exp.label": "经历 & 教育", "exp.title": "经历与学历",
-    "exp.t1_title": "○○银行 实习", "exp.t1_org": "零售金融总部 · 首尔",
-    "exp.t1_desc": "协助客户组合分析工作，整理存款/贷款产品数据并制作可视化报告，深入了解客户服务流程。",
-    "exp.t2_period": "2023.09 — 至今", "exp.t2_title": "金融经济学会成员", "exp.t2_org": "○○大学 经济学科学术社团",
-    "exp.t2_desc": "每周进行市场行情分析发表，运营模拟投资组合，并在学会期刊发表一篇论文。",
-    "exp.t3_period": "2021.03 — 至今", "exp.t3_title": "经济学部在读",
-    "exp.t3_desc": "主修金融经济学。主要课程：金融市场论、投资论、衍生品论、计量经济学、企业财务论。",
-    "proj.label": "项目", "proj.title": "项目作品",
-    "proj.p1_tag": "财务分析", "proj.p1_name": "韩国银行盈利能力分析",
-    "proj.p1_desc": "分析四大商业银行2020–2023年财务报表，用Excel建模追踪NIM和ROE变化趋势，制作加息期盈利变化可视化报告。",
-    "proj.p2_tag": "风险分析", "proj.p2_name": "模拟投资组合管理",
-    "proj.p2_desc": "在学会活动中配置1000万韩元虚拟资产并运营6个月，应用VaR概念，制定每周再平衡策略并进行业绩分析发表。",
-    "proj.p3_tag": "数据分析", "proj.p3_name": "家庭债务与消费相关性研究",
-    "proj.p3_desc": "使用Python收集分析韩国银行ECOS数据，通过回归分析实证家庭债务增加对消费支出的影响，荣获系内发表最优秀奖。",
-    "proj.p4_tag": "研究报告", "proj.p4_name": "ESG金融产品趋势分析",
-    "proj.p4_desc": "调查国内外ESG债券和基金市场动向，比较主要金融机构的ESG策略，撰写20页研究报告并进行团队发表。",
-    "contact.label": "联系方式", "contact.title": "联系我",
-    "contact.desc": "有关金融行业求职或合作方面的建议和咨询，欢迎通过以下渠道随时联系。",
-    "contact.name": "姓名", "contact.email": "电子邮件", "contact.message": "请输入留言...", "contact.send": "发送消息",
-    "footer.text": "© 2025 金书贤. Built with GitHub Pages.",
-    "__lang_label": "中文"
-  },
-  ja: {
-    "nav.about": "自己紹介", "nav.skills": "スキル", "nav.experience": "経歴",
-    "nav.projects": "プロジェクト", "nav.contact": "お問い合わせ",
-    "hero.badge": "金融・銀行 ポートフォリオ",
-    "hero.name": "はじめまして、<br><span>キム・ソヒョン</span>です",
-    "hero.sub": "銀行・証券・金融サービス志望",
-    "hero.desc": "金融業界への深い理解と情熱をもとに、<br>データと分析で価値を生み出したいと思っています。",
-    "hero.cta1": "プロジェクトを見る", "hero.cta2": "お問い合わせ",
-    "about.label": "About Me", "about.title": "自己紹介",
-    "about.p1": "金融・経済学を専攻し、銀行・証券分野に深い関心を持つ就職活動中の学生です。金融データ分析とリスク管理に特に興味を持ち、関連プロジェクトやインターンシップの経験を積んできました。",
-    "about.p2": "数字やデータの裏に隠れた市場の流れを読み取り、実際の意思決定につなげることにやりがいを感じます。チームワークとコミュニケーション能力を活かし、金融の現場に早期から貢献したいと考えています。",
-    "about.p3": "✦ 希望職種：銀行・証券分野（職種探索中）<br>✦ 興味分野：リテールバンキング、資産管理、リサーチ、リスク管理",
-    "about.stat1": "金融関連プロジェクト", "about.stat2": "金融関連資格", "about.stat3": "経済/経営学部在学",
-    "skills.label": "スキル & 資格", "skills.title": "保有スキル",
-    "skills.cat1": "金融知識", "skills.cat2": "分析ツール", "skills.cat3": "資格・能力",
-    "skills.s1_1": "財務諸表分析", "skills.s1_2": "株式・債券の基礎", "skills.s1_3": "リスク管理の概念", "skills.s1_4": "デリバティブの基礎", "skills.s1_5": "マクロ経済分析",
-    "skills.s2_1": "Excel / 財務モデリング", "skills.s2_2": "Python (pandas, numpy)", "skills.s2_3": "SQL基礎", "skills.s2_4": "Bloomberg基礎", "skills.s2_5": "PowerPoint / レポート作成",
-    "skills.s3_1": "投資資産運用士（取得済）", "skills.s3_2": "韓国史能力検定1級", "skills.s3_3": "TOEIC 000点", "skills.s3_4": "コミュニケーション・発表", "skills.s3_5": "チームプロジェクト経験",
-    "exp.label": "経験 & 学歴", "exp.title": "経歴・学歴",
-    "exp.t1_title": "○○銀行 インターンシップ", "exp.t1_org": "リテール金融本部 · ソウル",
-    "exp.t1_desc": "顧客ポートフォリオ分析補助業務。預金・ローン商品データの整理と可視化レポート作成。顧客対応プロセスの理解。",
-    "exp.t2_period": "2023.09 — 現在", "exp.t2_title": "金融経済学会 部員", "exp.t2_org": "○○大学 経済学科 学術サークル",
-    "exp.t2_desc": "毎週の市況分析発表と模擬ポートフォリオ運用。学会誌に論文1本寄稿。",
-    "exp.t3_period": "2021.03 — 現在", "exp.t3_title": "経済学部 在学中",
-    "exp.t3_desc": "金融経済学専攻。主な履修科目：金融市場論、投資論、デリバティブ論、計量経済学、企業財務論。",
-    "proj.label": "プロジェクト", "proj.title": "プロジェクト",
-    "proj.p1_tag": "財務分析", "proj.p1_name": "国内銀行の収益性分析",
-    "proj.p1_desc": "4大都市銀行の2020–2023年財務諸表を分析し、NIM・ROEの推移をExcelでモデル化。金利上昇期の収益性変化を可視化したレポートを作成。",
-    "proj.p2_tag": "リスク分析", "proj.p2_name": "模擬ポートフォリオ運用",
-    "proj.p2_desc": "学会活動として1,000万ウォンの仮想資産を6ヶ月間運用。VaRの概念を適用し、週次リバランス戦略を策定・発表。",
-    "proj.p3_tag": "データ分析", "proj.p3_name": "家計債務と消費の相関分析",
-    "proj.p3_desc": "韓国銀行ECOSデータをPythonで収集・分析。家計債務増加が消費支出に与える影響を回帰分析で実証。学科発表最優秀賞受賞。",
-    "proj.p4_tag": "リサーチ", "proj.p4_name": "ESG金融商品トレンド分析",
-    "proj.p4_desc": "国内外のESG債券・ファンド市場動向を調査し、主要金融機関のESG戦略を比較。20ページのリサーチレポートを作成・チーム発表。",
-    "contact.label": "お問い合わせ", "contact.title": "連絡先",
-    "contact.desc": "金融業界への就職や協業に関するご提案・お問い合わせは、下記のチャンネルからお気軽にご連絡ください。",
-    "contact.name": "お名前", "contact.email": "メールアドレス", "contact.message": "メッセージを入力してください...", "contact.send": "メッセージを送る",
-    "footer.text": "© 2025 キム・ソヒョン. Built with GitHub Pages.",
-    "__lang_label": "日本語"
+    "nav.about":"About","nav.skills":"Skills","nav.journey":"Journey","nav.cardnews":"Cards","nav.projects":"Projects","nav.contact":"Contact",
+    "hero.name":"Seohyun Kim <span>Portfolio</span>","hero.cta1":"View Projects","hero.cta2":"Contact Me",
+    "about.label":"About Me","about.title":"About Me","about.p1":"Please enter your introduction.",
+    "skills.label":"Skills","skills.title":"Core Skills","skills.cat1":"Finance Knowledge","skills.cat2":"Analytical Tools",
+    "skills.s1_1":"Financial Statement Analysis","skills.s1_2":"Stocks & Bonds Basics","skills.s1_3":"Risk Management Concepts","skills.s1_4":"Derivatives Basics","skills.s1_5":"Macroeconomic Analysis",
+    "skills.s2_1":"Excel / Financial Modeling","skills.s2_2":"Python (pandas, numpy)","skills.s2_3":"SQL Basics","skills.s2_4":"Bloomberg Basics","skills.s2_5":"PowerPoint / Reporting",
+    "journey.label":"Education","journey.title":"Learning Journey","journey.camp":"SK Networks AI Camp, 25th Cohort · Dec 2025 – Jun 2026",
+    "journey.p1_period":"Dec 2025\n~ Jan 2026","journey.p1_title":"Python & Data Collection","journey.p1_desc":"Started from environment setup and Python basics — syntax, data structures, functions, and classes — then built real data pipelines using web crawling and API integration.",
+    "journey.p2_period":"Jan 2026\n~ Feb 2026","journey.p2_title":"Data Analysis & Visualization","journey.p2_desc":"Cleaned and processed large datasets, extracted insights through statistical analysis and visualization. Designed databases with SQL and set up Docker-based environments.",
+    "journey.p3_period":"Feb 2026\n~ Mar 2026","journey.p3_title":"Machine Learning & Deep Learning","journey.p3_desc":"Implemented supervised and unsupervised learning algorithms, and designed CNN-based image classification models with PyTorch. Tracked experiments and optimized model performance using MLflow.",
+    "journey.p4_period":"Mar 2026\n~ Apr 2026","journey.p4_title":"LLM & RAG & AI Agent","journey.p4_desc":"Built RAG pipelines with LangChain, embedded documents into vector databases for retrieval-based AI services, and designed Agents to automate multi-step workflows.",
+    "journey.p5_period":"Apr 2026\n~ Jun 2026","journey.p5_title":"Full-Stack Web Development & Deployment","journey.p5_desc":"Built full-stack services with Django REST API and React frontend, configured multi-container environments with Docker Compose, and implemented real-time communication via WebSocket.",
+    "proj.label":"Projects","proj.title":"Projects",
+    "contact.label":"Contact","contact.title":"Contact","contact.name":"Name","contact.email":"Email","contact.message":"Your message...","contact.send":"Send Message",
+    "__lang":"English"
   }
 };
 
-// ── 언어 전환 ──
 let currentLang = 'ko';
-
 function applyLang(lang) {
-  const t = i18n[lang];
-  if (!t) return;
+  const t = i18n[lang]; if (!t) return;
   currentLang = lang;
-
-  // 일반 텍스트 교체
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
-  // innerHTML 교체 (줄바꿈, span 포함)
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (t[key] !== undefined) el.innerHTML = t[key];
-  });
-  // placeholder 교체
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key] !== undefined) el.placeholder = t[key];
-  });
-
-  // 버튼 라벨 업데이트
-  document.getElementById('langCurrent').textContent = t['__lang_label'];
-
-  // active 표시
-  document.querySelectorAll('.lang-option').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-  });
-
-  // html lang 속성
-  const langMap = { ko: 'ko', en: 'en', zh: 'zh-CN', ja: 'ja' };
-  document.documentElement.lang = langMap[lang] || lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => { const v = t[el.getAttribute('data-i18n')]; if (v !== undefined) el.textContent = v; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { const v = t[el.getAttribute('data-i18n-html')]; if (v !== undefined) el.innerHTML = v; });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const v = t[el.getAttribute('data-i18n-placeholder')]; if (v !== undefined) el.placeholder = v; });
+  document.querySelectorAll('.lang-option').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
+  document.documentElement.lang = lang;
 }
 
-// 드롭다운 클릭 이벤트
 document.querySelectorAll('.lang-option').forEach(btn => {
-  btn.addEventListener('click', () => {
-    applyLang(btn.getAttribute('data-lang'));
-    document.getElementById('langSwitcher').classList.remove('open');
-  });
+  btn.addEventListener('click', () => { applyLang(btn.getAttribute('data-lang')); document.getElementById('langSwitcher').classList.remove('open'); });
 });
+document.getElementById('langBtn').addEventListener('click', e => { e.stopPropagation(); document.getElementById('langSwitcher').classList.toggle('open'); });
+document.addEventListener('click', () => document.getElementById('langSwitcher').classList.remove('open'));
 
-// 모바일: 클릭으로 열기/닫기
-document.getElementById('langBtn').addEventListener('click', (e) => {
-  e.stopPropagation();
-  document.getElementById('langSwitcher').classList.toggle('open');
-});
-document.addEventListener('click', () => {
-  document.getElementById('langSwitcher').classList.remove('open');
-});
-
-// ── 스크롤 애니메이션 ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+// scroll animation
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
